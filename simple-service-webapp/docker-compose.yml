@@ -1,0 +1,8 @@
+version: '2'
+services:
+  tomcat:
+    image: tomcat:7
+    volumes:
+      - ./target/simple-service-webapp.war:/usr/local/tomcat/webapps/simple-service-webapp.war
+    ports:
+      - 8888:8080
