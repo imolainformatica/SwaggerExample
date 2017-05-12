@@ -22,7 +22,7 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-            <!--Per compilazione sorgenti generati
+            <!--Per generazione java da json schema
             https://github.com/joelittlejohn/jsonschema2pojo/wiki/Getting-Started#the-maven-plugin -->
             <plugin>
                 <groupId>org.jsonschema2pojo</groupId>
@@ -68,6 +68,11 @@
             <artifactId>jersey-media-moxy</artifactId>
         </dependency>
         -->
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
         <!--Per compilazione sorgenti generati-->
         <dependency>
             <groupId>commons-lang</groupId>
