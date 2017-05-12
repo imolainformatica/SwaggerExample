@@ -1,4 +1,4 @@
-package it.imolinfo;
+package it.imolinfo.controller;
 
 import com.adp.types.worker.Address;
 

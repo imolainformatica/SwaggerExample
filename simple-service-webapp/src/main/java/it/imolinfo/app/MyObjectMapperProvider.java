@@ -1,4 +1,4 @@
-package it.imolinfo;
+package it.imolinfo.app;
 
 /**
  * Created by morlins on 12/05/17.
