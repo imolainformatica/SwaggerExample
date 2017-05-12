@@ -15,7 +15,6 @@
         "type" : "object",
         "properties" : {
           "associateOID" : {
-          "associateOID" : {
             "description" : "A unique identifier of an associate",
             "type" : "string"
           },
