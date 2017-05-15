@@ -34,9 +34,9 @@
 
         <load-on-startup>2</load-on-startup>
     </servlet>
-    <servlet>
+    <!--<servlet>
         <servlet-name>Bootstrap</servlet-name>
         <servlet-class>it.imolinfo.swagger.Bootstrap</servlet-class>
         <load-on-startup>2</load-on-startup>
-    </servlet>
+    </servlet>-->
 </web-app>
