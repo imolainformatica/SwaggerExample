@@ -1,0 +1,260 @@
+{
+  "swagger": "2.0",
+  "paths": {
+    "/address": {
+      "get": {
+        "operationId": "getAdress",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Address"
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/myresource": {
+      "get": {
+        "operationId": "getIt",
+        "produces": ["text/plain"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string"
+            },
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "StreetTypeCode_": {
+      "type": "object",
+      "properties": {
+        "codeValue": {
+          "type": "string",
+          "description": "The code for the related entity"
+        },
+        "shortName": {
+          "type": "string",
+          "description": "Short description of the related code"
+        },
+        "longName": {
+          "type": "string",
+          "description": "Long description of the related code"
+        }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "scriptCode": {
+          "description": "The type of script the in which the associated entity is represented. Associated codelist is ISO15924-A. Use the alpha-4 representation versus the single digit numeric representation. Format is lowercase with initial letter capitalized. For example, Cyrillic is Cyrl",
+          "$ref": "#/definitions/ScriptCode__"
+        },
+        "lineFour": {
+          "type": "string",
+          "description": "Line Four of Street Address Information"
+        },
+        "lineFive": {
+          "type": "string",
+          "description": "Line Five of Street Address Information"
+        },
+        "buildingNumber": {
+          "type": "string",
+          "description": "The number of a building in the context of a physical address, e.g. House Number"
+        },
+        "buildingName": {
+          "type": "string",
+          "description": "The name of a building in the context of a physical address, e.g. Rockefeller Center"
+        },
+        "blockName": {
+          "type": "string",
+          "description": "The name the block"
+        },
+        "streetName": {
+          "type": "string",
+          "description": "The name of the street"
+        },
+        "streetTypeCode": {
+          "description": "The type of street, e.g. Lane, Passage, Way",
+          "$ref": "#/definitions/StreetTypeCode_"
+        },
+        "unit": {
+          "type": "string",
+          "description": "A unit in the context of an address, e.g. an Apartment Number or an Office"
+        },
+        "floor": {
+          "type": "string",
+          "description": "A floor in the context of an address"
+        },
+        "stairCase": {
+          "type": "string",
+          "description": "A reference to a particular staircase in the context of an address"
+        },
+        "door": {
+          "type": "string",
+          "description": "A reference to a particular door in the context of an address. e.g. Apartment Number"
+        },
+        "postOfficeBox": {
+          "type": "string",
+          "description": "A post office box"
+        },
+        "deliveryPoint": {
+          "type": "string",
+          "description": "A way to identify a specific delivery location, e.g. a mail-stop"
+        },
+        "plotID": {
+          "type": "string",
+          "description": "A way to identify a building plot, e.g. a specific building construction site"
+        },
+        "countrySubdivisionLevel2": {
+          "description": "A country subdivision correlating to a administrative level two levels below country. For example, in the United States, this might be a county",
+          "$ref": "#/definitions/CountrySubdivisionLevel2_"
+        },
+        "nameCode": {
+          "description": "A descriptive coded name of the address",
+          "$ref": "#/definitions/NameCode_____________"
+        },
+        "attentionOfName": {
+          "type": "string",
+          "description": "Attention of Name"
+        },
+        "careOfName": {
+          "type": "string",
+          "description": "Care Of Name"
+        },
+        "lineOne": {
+          "type": "string",
+          "description": "Line One of Street Address Information"
+        },
+        "lineTwo": {
+          "type": "string",
+          "description": "Line Two of Street Address Information"
+        },
+        "lineThree": {
+          "type": "string",
+          "description": "Line Three of Street Address Information"
+        },
+        "cityName": {
+          "type": "string",
+          "description": "A city in the context of an address"
+        },
+        "countrySubdivisionLevel1": {
+          "description": "A country subdivision correlating to a administrative level one level below country. For example, in the United States, this would be a state",
+          "$ref": "#/definitions/CountrySubdivisionLevel1_"
+        },
+        "countryCode": {
+          "type": "string",
+          "description": "A simple (string) code.  Can have a code list reference"
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "The string of characters used to identify the postal code"
+        },
+        "geoCoordinate": {
+          "description": "The coordinates of the location of the address",
+          "$ref": "#/definitions/GeoCoordinate_"
+        }
+      }
+    },
+    "CountrySubdivisionLevel1_": {
+      "type": "object",
+      "properties": {
+        "codeValue": {
+          "type": "string",
+          "description": "The code for the related entity"
+        },
+        "shortName": {
+          "type": "string",
+          "description": "Short description of the related code"
+        },
+        "longName": {
+          "type": "string",
+          "description": "Long description of the related code"
+        },
+        "subdivisionType": {
+          "type": "string",
+          "description": "The type of a country sub-division, e.g. state, county"
+        }
+      }
+    },
+    "ScriptCode__": {
+      "type": "object",
+      "properties": {
+        "codeValue": {
+          "type": "string",
+          "description": "The code for the related entity"
+        },
+        "shortName": {
+          "type": "string",
+          "description": "Short description of the related code"
+        },
+        "longName": {
+          "type": "string",
+          "description": "Long description of the related code"
+        }
+      }
+    },
+    "GeoCoordinate_": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "description": "The angle, in degrees, of a position on Earth above the equator. (Latitude is negative for a place below the equator.) specified in decimal degrees"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "description": "The angle, in degrees, of a position on Earth around the equator from the Greenwich Meridian specified in decimal degrees"
+        }
+      }
+    },
+    "NameCode_____________": {
+      "type": "object",
+      "properties": {
+        "codeValue": {
+          "type": "string",
+          "description": "The code for the related entity"
+        },
+        "shortName": {
+          "type": "string",
+          "description": "Short description of the related code"
+        },
+        "longName": {
+          "type": "string",
+          "description": "Long description of the related code"
+        }
+      }
+    },
+    "CountrySubdivisionLevel2_": {
+      "type": "object",
+      "properties": {
+        "codeValue": {
+          "type": "string",
+          "description": "The code for the related entity"
+        },
+        "shortName": {
+          "type": "string",
+          "description": "Short description of the related code"
+        },
+        "longName": {
+          "type": "string",
+          "description": "Long description of the related code"
+        },
+        "subdivisionType": {
+          "type": "string",
+          "description": "The type of a country sub-division, e.g. state, county"
+        }
+      }
+    }
+  }
+}

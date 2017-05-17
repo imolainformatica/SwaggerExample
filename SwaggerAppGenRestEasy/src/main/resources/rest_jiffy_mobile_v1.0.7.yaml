@@ -1,0 +1,2105 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+# This is your document metadata
+info:
+  title: JIFFY REST MOBILE
+  description: Servizi per l'applicazione JIFFY REST MOBILE
+  version: "1.0.6"
+basePath: /scrigno-jiffy-rest-mobile
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /v1.0/utente:
+    get:
+      summary: Attivazione controller
+      description: Restituisce le informazioni relative l'utente autenticato. Tra cui la possibilità di conoscere l'abilitazione al servizio Jiffy.
+      tags:
+        - Attivazione
+      parameters:
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+      responses:
+        200:
+          description: OK
+          schema:
+             $ref: '#/definitions/DatiUtente'
+          headers:
+            idRisposta:
+              type: string
+        400:
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/rapporti:
+    get:
+      summary: Rapporti controller
+      description: Restituisce i Rapporti BPS dell'utente, associati e non associati a Jiffy. Specificando tipologia=DEFAULT&fields=idRapporto è possibile reperire l'id del rapporto di default
+      tags:
+        - Rapporti
+      parameters:
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: statoattivazione
+          in: query
+          required: false
+          type: string
+          description: serve per selezionare i rapporti in base al loro stato di attivazione.
+        - name: tipologia
+          in: query
+          required: false
+          type: string
+          description: valorizzabile solo con DEFAULT
+        - name: fields
+          in: query
+          required: false
+          type: string
+          description: valorizzabile solo con idRapporto
+
+
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+             $ref: '#/definitions/Rapporto'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/numeritelefonici:
+    get:
+      summary: Attivazione controller
+      description: Recupera la lista dei numeri di telefono dell'utente su SCRIGNO. Il censimento delle operazioni parla di "contatti certificati".
+      tags:
+        - Attivazione
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/NumeroTelefonico'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/attivazione:
+    get:
+      summary: Attivazione controller
+      description: |
+        Viene controllato SIA  lo stato di attivazione del servizio jiffy del cliente.
+      tags:
+        - Attivazione
+      parameters:
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+      responses:
+        204:
+          description: NO CONTENT
+
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/numeritelefonici/{idTelefono}/rapporti/{idRapporto}/attivazione/transazioni:
+    post:
+      summary: Attivazione controller
+      description: apre una pratica (transazione) di attivazione di servizio jiffy per l'utente interessato. Per confermare l'attivazione occorre inserire un codice di sicurezza.
+      tags:
+        - Attivazione
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: idTelefono
+          in: path
+          required: true
+          description: idtelefono
+          type: integer
+        - name: idRapporto
+          in: path
+          required: true
+          description: idRapporto
+          type: integer
+        - name: datiattivazione
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/DatiAttivazione"
+
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/DatiConferma'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT, TUTTE LE ECCEZIONI DUBBIA RISOTTOMISSIONE
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/numeritelefonici/{idTelefono}/rapporti/{idRapporto}/attivazione/transazioni/{idTransazione}:
+    put:
+      summary: Attivazione controller
+      description: Chiude la pratica di attivazione del servizio Jiffy aperta precedentemente.
+      tags:
+        - Attivazione
+      parameters:
+
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: idTelefono
+          in: path
+          required: true
+          description: idTelefono
+          type: integer
+        - name: idRapporto
+          in: path
+          required: true
+          description: idRapporto
+          type: integer
+        - name: idTransazione
+          in: path
+          required: true
+          description: idTransazione
+          type: string
+        - name: codiceConferma
+          in: body
+          required: true
+          description: Serve per confermare l'operazione
+          schema:
+            $ref: '#/definitions/CodiceConferma'
+
+
+      responses:
+        204:
+          description: NO CONTENT
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT, TUTTE LE ECCEZIONI DUBBIA RISOTTOMISSIONE
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/rapporti/{idRapporto}/massimali-residui:
+    get:
+      summary: Rapporti Controller
+      description: Vengono ritornati, passando per SIA, la lista di tutti i massimali e/o i residui di Jiffy per quell'utente.
+      tags:
+        - Rapporti
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: idRapporto
+          in: path
+          required: true
+          description: idRapporto
+          type: integer
+#        - name: tipoServizio
+#          in: query
+#          required: true
+#          description: tipoServizio
+#          type: string
+
+
+      responses:
+        200:
+          description: OK
+          schema:
+             $ref: '#/definitions/MassimalieResidui'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/rapporti/{idRapporto}/pagamenti:
+    get:
+      summary: Pagamenti controller
+      description: Elenco di tutti i pagamenti JIFFY dell'utente (anche quelli in stato pending), per un determinato rapporto.
+      tags:
+        - Pagamenti
+      parameters:
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: idRapporto
+          type: integer
+          required: true
+          in: path
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+             $ref: '#/definitions/PagamentoJiffy'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/contatti-iscritti/{numeroTelefono}/pagamenti:
+
+    post:
+      tags:
+        - Pagamenti
+      description: Crea una nuova transazione di pagamento per l'utente. Questa operazione viene SEMPRE invocata prima di effettuare  un vero e proprio pagamento. In particolare per questa api, il numero di telefono destinatario DEVE essere iscritto a Jiffy
+
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: numeroTelefono
+          in: path
+          required: true
+          description: numero telefono dell'utente destinatario
+          type: string
+        - name: datiTransazione
+          in: body
+          required: true
+          description: info da passare per la creazione di una transazione di pagamento
+          schema:
+            $ref: '#/definitions/DatiPagamento'
+
+      responses:
+        200:
+          description: OK
+          schema:
+             $ref: '#/definitions/PagamentoPredispostoBeneficiarioJiffy'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/contatti-iscritti/{numeroTelefono}/pagamenti/{idPagamento}/transazioni:
+    post:
+      summary: Pagamenti controller
+      description: Apre una pratica di pagamento per l'utente, previa predisposizione della transazione. L'operazione chiede una conferma da parte dell'utente.
+      tags:
+        - Pagamenti
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: idPagamento
+          in: path
+          required: true
+          description: id del pagamento predisposto prima
+          type: string
+        - name: numeroTelefono
+          in: path
+          required: true
+          description: numero di telefono del destinatario del pagamento
+          type: string
+        - name: datiPagamento
+          in: body
+          required: true
+          schema:
+              $ref: "#/definitions/DatiPagamentoJiffy"
+      responses:
+        200:
+          description: OK
+          schema:
+             $ref: '#/definitions/DatiConferma'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/contatti-iscritti/{numeroTelefono}/pagamenti/{idPagamento}/transazioni/{idTransazione}:
+    put:
+      summary: Pagamenti controller
+      description: conferma una pratica di pagamento aperta in precedenza.
+      tags:
+        - Pagamenti
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: numeroTelefono
+          in: path
+          required: true
+          description: numero di telefono del destinatario
+          type: string
+        - name: idPagamento
+          in: path
+          required: true
+          type: string
+        - name: idTransazione
+          in: path
+          required: true
+          description: idTransazione
+          type: string
+        - name: codiceConferma
+          in: body
+          required: true
+          description: Codice di conferma per terminare l'operazione, viene ottenuto mediante o urivasco o sms
+          schema:
+            $ref: '#/definitions/CodiceConferma'
+
+      responses:
+        200:
+          description: OK
+          schema:
+             $ref: '#/definitions/PagamentoConfermato'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/contatti-non-iscritti/{numeroTelefono}/pagamenti:
+    post:
+      tags:
+        - Pagamenti
+      description: Crea una nuova transazione di pagamento per l'utente. Questa operazione viene sempre invocata prima di effettuare  un vero e proprio pagamento. In particolare se il beneficiario non ha il servizio Jiffy attivo, allora il futuro pagamento sarà pending. Un pagamento in stato di pending può essere annullato.
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: numeroTelefono
+          in: path
+          required: true
+          description: token-jwt
+          type: string
+        - name: datiTransazione
+          in: body
+          required: true
+          description: info da passare per la creazione di una transazione di pagamento
+          schema:
+            $ref: '#/definitions/DatiPagamento'
+      responses:
+        200:
+          description: OK
+          schema:
+             $ref: '#/definitions/PagamentoPredisposto'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/contatti-non-iscritti/{numeroTelefono}/pagamenti/transazioni:
+    post:
+      summary: Pagamenti controller
+      description: Apre una pratica di pagamento per l'utente, previa predisposizione della transazione. L'operazione chiede una conferma da parte dell'utente.
+      tags:
+        - Pagamenti
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: numeroTelefono
+          in: path
+          required: true
+          description: numero di telefono del destinatario del pagamento
+          type: string
+        - name: datiPagamento
+          in: body
+          required: true
+          schema:
+              $ref: "#/definitions/DatiPagamentoNonJiffy"
+      responses:
+        200:
+          description: OK
+          schema:
+             $ref: '#/definitions/DatiConferma'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/contatti-non-iscritti/{numeroTelefono}/pagamenti/transazioni/{idTransazione}:
+    put:
+      summary: Pagamenti controller
+      description: conferma una pratica di pagamento aperta in precedenza. Il pagamento sarà in stato di pending.
+      tags:
+        - Pagamenti
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: numeroTelefono
+          in: path
+          required: true
+          description: numero di telefono del destinatario
+          type: string
+        - name: idTransazione
+          in: path
+          required: true
+          description: idTransazione
+          type: string
+        - name: codiceConferma
+          in: body
+          required: true
+          description: Codice di conferma per terminare l'operazione, viene ottenuto mediante o urivasco o sms
+          schema:
+            $ref: '#/definitions/CodiceConferma'
+
+      responses:
+        200:
+          description: OK
+          schema:
+             $ref: '#/definitions/PagamentoConfermato'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/contatti-non-iscritti/{numeroTelefono}/pagamenti/{idPagamento}/transazioni:
+    post:
+      tags:
+        - Pagamenti
+      summary: Pagamenti controller
+      description: Annulla la conferma di un pagamento in stato di pending
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: numeroTelefono
+          in: path
+          required: true
+          description: idPagamento
+          type: string
+        - name: idPagamento
+          in: path
+          required: true
+          description: idPagamento
+          type: string
+        - name: pagamentoPending
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/DatiPagamentoPending"
+
+      responses:
+        200:
+          description: OK
+          schema:
+             $ref: '#/definitions/DatiConferma'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/contatti-non-iscritti/{numeroTelefono}/pagamenti/{idPagamento}/transazioni/{idTransazione}:
+    put:
+      summary: Pagamenti controller
+      description: Conferma L'annullamento di un pagamento pending
+      tags:
+        - Pagamenti
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: numeroTelefono
+          in: path
+          description: numero di telefono destinatario del pagamento
+          required: true
+          type: string
+        - name: idPagamento
+          in: path
+          required: true
+          type: string
+        - name: idTransazione
+          in: path
+          required: true
+          description: idTransazione
+          type: string
+        - name: codiceConferma
+          in: body
+          required: true
+          description: |
+          schema:
+            $ref: '#/definitions/CodiceConferma'
+
+      responses:
+        204:
+          description: "NO CONTENT"
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  /v1.0/utente/rapporti/{idRapporto}/transazioni:
+    post:
+      summary: Rapporti controller
+      description: Apre una pratica per modificare lo stato di un rapporto già esistente In particolare è possibile associarlo/rimuoverlo da jiffy e selezionarlo come rapporto di default per l'accredito.  In base a questo tipooperazione deve essere valorizzato con ABILITAZIONE, DISABILITAZIONE, DEFAULTACCREDITO
+      tags:
+        - Rapporti
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice Operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: idRapporto
+          in: path
+          required: true
+          description: idRapporto
+          type: integer
+        - name: tipoOperazione
+          in: body
+          description: specifica il tipo di operazione da effettuare
+          required: true
+          schema:
+            $ref: '#/definitions/DatiModificaRapporto'
+      responses:
+        200:
+          description: OK
+          schema:
+              $ref: '#/definitions/DatiConferma'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT, RISOTTOMITTIBBILEFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/rapporti/{idRapporto}/transazioni/{idTransazione}:
+    put:
+      summary: Rapporti controller
+      description: conferma una pratica per modificare un rapporto aperta precedentemente.
+      tags:
+        - Rapporti
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice Operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: idRapporto
+          in: path
+          required: true
+          description: idTransazione
+          type: integer
+        - name: idTransazione
+          in: path
+          required: true
+          description: idTransazione
+          type: string
+        - name: datiConfermaRapporto
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/DatiConfermaRapporto'
+
+      responses:
+        204:
+          description: NO CONTENT
+          headers:
+            idRisposta:
+              type: string
+        400:
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/contatti-iscritti:
+    post:
+      summary: Pagamenti controller
+      description: L'utente invia tutti i contatti presenti nella sua rubrica a SIA e ottiene in risposta i soli contatti con JIFFY attivo.
+      tags:
+        - Pagamenti
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice Operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: contatti
+          in: body
+          required: true
+          description: Lista dei conttatti
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Contatto'
+
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Contatto'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/disattivazione/transazioni:
+    put:
+      summary: Attivazione controller
+      description: apre una pratica di disattivazione dell'utente... Questa transazione, quando confermata, disattiva jiffy dall'utente e tutti i suoi rapporti
+      tags:
+        - Attivazione
+      parameters:
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice Operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: numeroIdentitel
+          in: body
+          description: numero di telefono su cui eventualmente inviare sms
+          required: false
+          schema:
+            type: string
+
+      responses:
+        200:
+          description: OK
+          schema:
+              $ref: '#/definitions/DatiConferma'
+          headers:
+            idRisposta:
+              type: string
+        400: # DATITESTATAFAULT, INPUTFAULT, RISOTTOMITTIBBILEFAULT
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/disattivazione/transazioni/{idTransazione}:
+    delete:
+      summary: Attivazione controller
+      description: conferma una pratica di disattivazione dell'utente aperta in precedenza.
+      tags:
+        - Attivazione
+      parameters:
+
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice Operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt
+          type: string
+        - name: idTransazione
+          in: path
+          required: true
+          description: idTransazione
+          type: string
+        - name: codiceConferma
+          in: body
+          required: true
+          description: Codice di conferma per terminare l'operazione, viene ottenuto mediante o urivasco o sms
+          schema:
+            $ref: '#/definitions/CodiceConferma'
+
+      responses:
+        204:
+          description: NO CONTENT
+          headers:
+            idRisposta:
+              type: string
+        400:
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/login:
+    post:
+      summary: Sicurezza Controller
+      description: API che effettua il login dell'utente e genera il token jwt. Questo token descrive la sessione dell'utente e deve essere presentato poi in header in tutte le successive iterazioni
+      tags:
+        - Sicurezza
+      parameters:
+        - name: codiceApplicazione
+          in: header
+          required: true
+          description: codice Applicazione
+          type: string
+        - name: codiceCanale
+          in: header
+          required: true
+          description: codice Canale
+          type: string
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice Operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: datiDiAccesso
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/DatiDiAccesso"
+
+      responses:
+        204:
+          description: "NO CONTENT"
+          headers:
+            idRisposta:
+              type: string
+            token-jwt:
+              type: string
+        400:
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v2.0/login:
+    post:
+      summary: Sicurezza Controller
+      description: API che effettua il login dell'utente e genera il token jwt. Questo token descrive la sessione dell'utente e deve essere presentato poi in header in tutte le successive iterazioni. Questa nuova versione supporta l'uso del fingerprint.
+      tags:
+        - Sicurezza
+      parameters:
+        - name: codiceApplicazione
+          in: header
+          required: true
+          description: codice Applicazione
+          type: string
+        - name: codiceCanale
+          in: header
+          required: true
+          description: codice Canale
+          type: string
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice Operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: datiDiAccesso
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/DatiLogin"
+
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/Login"
+          headers:
+            token-jwt:
+              type: string
+        400:
+          description: "BAD REQUEST"
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: "UNAUTHORIZED"
+          schema:
+            $ref: '#/definitions/Error'
+        412:
+          description: "PRECONDITION FAILED"
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v2.0/utente/token_autenticazione/transazioni:
+    post:
+      tags:
+        - Sicurezza
+      summary: Sicurezza Controller
+      description: Effettua la verifica della richiesta token per il finger
+      parameters:
+        - name: numeroIdentitel
+          in: body
+          required: true
+          description: Informazioni verifica autenticazione
+          schema:
+            $ref: '#/definitions/NumeroIdentitel'
+        - name: Authorization
+          in: header
+          required: true
+          description: token jwt Bearer
+          type: string
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Transazione'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        '412':
+          description: Precondition Failed
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      tags:
+        - Sicurezza
+      summary: Sicurezza Controller
+      description: Effettua la conferma della richiesta token per il finger
+      parameters:
+        - name: confermaOperazioneDispositiva
+          in: body
+          required: true
+          description: Informazioni conferma autenticazione
+          schema:
+            $ref: '#/definitions/CodiceConferma'
+        - name: Authorization
+          in: header
+          required: true
+          description: token jwt Bearer
+          type: string
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TokenAutenticazione'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        '412':
+          description: Precondition Failed
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v2.0/utente/token_autenticazione/transazioni-cancellazioni:
+    post:
+      tags:
+        - Sicurezza
+      summary: Sicurezza Controller
+      description: Effettua la verifica della cancellazione del token
+      parameters:
+        - name: numeroIdentitel
+          in: body
+          required: true
+          description: Informazioni verifica autenticazione
+          schema:
+            $ref: '#/definitions/DatiTransazioneCancellazione'
+        - name: Authorization
+          in: header
+          required: true
+          description: token jwt Bearer
+          type: string
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/DatiConferma'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        '412':
+          description: Precondition Failed
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  /v2.0/utente/token_autenticazione/transazioni-cancellazioni/{idTransazione}:
+
+    put:
+      tags:
+        - Sicurezza
+      summary: Sicurezza Controller
+      description: Effettua la conferma della cancellazione del token
+      parameters:
+        - name: confermaOperazioneDispositiva
+          in: body
+          required: true
+          description: Informazioni conferma autenticazione
+          schema:
+            $ref: '#/definitions/CodiceConferma'
+        - name: Authorization
+          in: header
+          required: true
+          description: token jwt Bearer
+          type: string
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: idTransazione
+          in: path
+          required: true
+          description: idTransazione
+          type: string
+      responses:
+        '204':
+          description: NO CONTENT
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        '412':
+          description: Precondition Failed
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  /v1.0/utente/logout:
+    post:
+      tags:
+        - Sicurezza
+      summary: Sicurezza Controller
+      description: Effettua il logout dell'utente
+      parameters:
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice Operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt bearer
+          type: string
+      responses:
+        '204':
+          description: OK
+          headers:
+            idRisposta:
+              type: string
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        '412':
+          description: Precondition Failed
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/sessione:
+    get:
+      tags:
+        - Sicurezza
+      summary: Sicurezza Controller
+      description: Controlla la validità della sessione di autenticazione dell'utente. Ritorna errore qualora scaduta. In questo caso occorre rieffettuare la login.
+      parameters:
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice Operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt bearer
+          type: string
+      responses:
+        '204':
+          description: OK
+          headers:
+            idRisposta:
+              type: string
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        '412':
+          description: Precondition Failed
+          schema:
+            $ref: '#/definitions/Error'
+
+  /v1.0/utente/autenticazione :
+    get:
+      tags:
+        - Autenticazione
+      summary: Autenticazione Controller
+      description: Recupero della tipologia di autenticazione dell'utente. O sms e numeri a cui inviare eventualmente il codice di autenticazione oppure OTP.
+      parameters:
+        - name: codiceOperazione
+          in: header
+          required: true
+          description: codice Operazione
+          type: string
+        - name: idConversazione
+          in: header
+          required: true
+          description: id conversazione
+          type: string
+        - name: authorization
+          in: header
+          required: true
+          description: token-jwt bearer
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TipoAutenticazione'
+          headers:
+            idRisposta:
+              type: string
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        '412':
+          description: Precondition Failed
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions:
+
+  DatiUtente:
+    required:
+      - abilitazioneJiffy
+      - nomeUtente
+    properties:
+      abilitazioneJiffy:
+        type: string
+      nomeUtente:
+        type: string
+
+
+  Rapporto:
+    required:
+      - idRapporto
+      - intestatario
+      - label
+      - iban
+      - statoAttivazione
+      - tipoRapporto
+      - alias
+    properties:
+      idRapporto:
+        type: integer
+      codiceFiliale:
+        type: string
+      numeroRapporto:
+        type: string
+      intestatario:
+        type: string
+      label:
+        type: string
+      iban:
+        type: string
+      alias:
+        type: string
+      statoAttivazione:
+        type: string
+        enum:
+          - ATTIVO
+          - NON_ATTIVO
+          - SOSPESO
+      tipoRapporto:
+        type: string
+        enum:
+          - CARTA_CONTO
+          - CONTO_CORRENTE
+
+  NumeroTelefonico:
+    required:
+      - idTelefono
+      - numeroTelefonico
+
+    properties:
+      idTelefono:
+        type: string
+      numeroTelefonico:
+        type: string
+      operatore:
+        type: string
+      descrizione:
+        type: string
+
+
+  DatiAttivazione:
+    required:
+      - numeroTelefonico
+    properties:
+      numeroTelefonico:
+        type: string
+      numeroIdentitel:
+        type: string
+      operatore:
+        type: string
+      descrizione:
+        type: string
+
+  DatiConferma:
+    required:
+      - idTransazione
+      - tipoAutorizzazione
+    properties:
+      idTransazione:
+        type: string
+      tipoAutorizzazione:
+        type: string
+      uriVasco:
+        type: string
+
+  DatiModificaRapporto:
+    required:
+      - tipoOperazione
+    properties:
+      numeroIdentitel:
+        type: string
+      tipoOperazione:
+        type: string
+        enum:
+            - ABILITAZIONE
+            - DISABILITAZIONE
+            - DEFAULTACCREDITO
+
+
+  MassimalieResidui:
+    properties:
+      massimali:
+        type: array
+        items:
+         $ref: '#/definitions/Massimale'
+      residui:
+        type: array
+        items:
+         $ref: '#/definitions/Residuo'
+
+  Massimale:
+    required:
+#      - tipoServizio
+      - tipoSoglia
+      - sogliaMinima
+      - sogliaMassima
+    properties:
+#      tipoServizio:
+#        type: string
+      tipoSoglia:
+        type: string
+      sogliaMinima:
+        type: number
+        format: double
+      sogliaMassima:
+        type: number
+        format: double
+
+  Residuo:
+    required:
+    - tipoSoglia
+    - importoResiduo
+    properties:
+      tipoSoglia:
+        type: string
+      importoResiduo:
+        type: number
+        format: double
+
+  PagamentoJiffy:
+    required:
+      - idPagamento
+      - mittente
+      - beneficiario
+      - statoTransazione
+      - dettagliPagamento
+    properties:
+      idPagamento:
+        type: string
+      statoTransazione:
+        type: string
+      dataRichiestaPagamento:
+        type: string
+        format: date-time
+      dataConfermaPagamento:
+        type: string
+        format: date-time
+      mittente:
+        $ref: '#/definitions/Mittente'
+      beneficiario:
+        $ref: '#/definitions/Beneficiario'
+      dettagliPagamento:
+        $ref: '#/definitions/DettagliPagamento'
+
+  Mittente:
+    required:
+      - nome
+      - cognome
+      - numeroTelefono
+      - iban
+    properties:
+      nome:
+        type: string
+      cognome:
+        type: string
+      numeroTelefono:
+        type: string
+      iban:
+        type: string
+
+  Beneficiario:
+    required:
+      - tipoStrumento
+      - numeroTelefono
+    properties:
+      nome:
+        type: string
+      cognome:
+        type: string
+      tipoStrumento:
+        type: string
+      numeroTelefono:
+        type: string
+
+  PagamentoConfermato:
+    required:
+      - idPagamento
+      - nominativoBeneficiario
+      - dataEsecuzione
+      - dettagliPagamento
+    properties:
+      idPagamento:
+        type: string
+      nominativoBeneficiario:
+        type: string
+      dataEsecuzione:
+        type: string
+        format: date-time
+      dettagliPagamento:
+        $ref: "#/definitions/DettagliPagamento"
+
+  DatiPagamento:
+    required:
+      - rapportoMittente
+      - importo
+      - causale
+    properties:
+      rapportoMittente:
+         $ref: "#/definitions/RapportoMittente"
+      importo:
+        type: number
+        format: double
+      causale:
+        type: string
+
+
+
+  PagamentoPredisposto:
+    required:
+      - identificativoOperazione
+      - dettagliPagamento
+    properties:
+      identificativoOperazione:
+        type: string
+      nominativoBeneficiario:
+        type: string
+      dettagliPagamento:
+        $ref: '#/definitions/DettagliPagamento'
+
+  PagamentoPredispostoBeneficiarioJiffy:
+    required:
+      - idPagamento
+      - idSia
+      - identificativoOperazione
+      - dettagliPagamento
+    properties:
+      idPagamento:
+        type: string
+      idSia:
+        type: string
+      identificativoOperazione:
+        type: string
+      nominativoBeneficiario:
+        type: string
+      dettagliPagamento:
+        $ref: '#/definitions/DettagliPagamento'
+
+  DettagliPagamento:
+    required:
+      - causale
+      - importo
+      - importoTotale
+    properties:
+
+      causale:
+        type: string
+      importo:
+        type: number
+        format: double
+      commissioni:
+        type: number
+        format: double
+      importoTotale:
+        type: number
+        format: double
+
+  DatiPagamentoJiffy:
+    required:
+      - rapportoMittente
+      - dettagliPagamento
+      - idSia
+    properties:
+# COORDINATE
+      rapportoMittente:
+        $ref: '#/definitions/RapportoMittente'
+      dettagliPagamento:
+        $ref: '#/definitions/DettagliPagamento'
+      idSia:
+        type: string
+      numeroIdentitel:
+        type: string
+
+  DatiPagamentoNonJiffy:
+    required:
+      - rapportoMittente
+      - dettagliPagamento
+    properties:
+      rapportoMittente:
+        $ref: '#/definitions/RapportoMittente'
+      dettagliPagamento:
+        $ref: '#/definitions/DettagliPagamento'
+      numeroIdentitel:
+        type: string
+
+  RapportoMittente:
+    required:
+      - idRapporto
+      - tipoRapporto
+
+    properties:
+      idRapporto:
+        type: integer
+      tipoRapporto:
+        type: string
+
+
+
+  DatiPagamentoPending:
+    required:
+      - iban
+      - dettagliPagamento
+    properties:
+# COORDINATE
+      iban:
+        type: string
+      dettagliPagamento:
+        $ref: '#/definitions/DettagliPagamento'
+      numeroIdentitel:
+        type: string
+
+# END
+
+
+
+  Contatto:
+    description: Dettaglio del contatto
+    required:
+      - numeroTelefono
+    properties:
+      numeroTelefono:
+        type: string
+
+  DatiConfermaRapporto:
+    required:
+      - tipoOperazione
+
+    properties:
+      tipoOperazione:
+        type: string
+        enum:
+          - ABILITAZIONE
+          - DISABILITAZIONE
+          - DEFAULTACCREDITO
+      codiceSMS:
+        type: string
+      codiceOTP:
+        type: string
+
+  DatiDiAccesso:
+    required:
+      - dettagliClient
+      - credenziali
+    properties:
+      dettagliClient:
+        $ref: '#/definitions/DettagliClient'
+      credenziali:
+        $ref: '#/definitions/Credenziali'
+
+
+  DettagliClient:
+    required:
+      - idDevice
+      - appVersion
+      - userAgent
+      - ipDevice
+    properties:
+      idDevice:
+        type: string
+      appVersion:
+        type: string
+      userAgent:
+        type: string
+      ipDevice:
+        type: string
+
+  Credenziali:
+    required:
+      - user
+      - password
+    properties:
+      user:
+        type: string
+      password:
+        type: string
+
+  DatiLogin:
+    required:
+      - dettagliClient
+      - credenziali
+    properties:
+      dettagliClient:
+        $ref: '#/definitions/DettagliClient'
+      credenziali:
+        $ref: '#/definitions/CredenzialiLogin'
+
+  Login:
+    properties:
+      tokenProssimaLogin:
+        type: string
+
+  CredenzialiLogin:
+    required:
+      - user
+    properties:
+      user:
+        type: string
+      password:
+        type: string
+      token:
+        type: string
+
+  CodiceConferma:
+    properties:
+      codiceSMS:
+        type: string
+      codiceOTP:
+        type: string
+
+  NumeroIdentitel:
+    properties:
+      numeroIdentitel:
+        type: string
+
+  Transazione:
+    required:
+      - tipoAutorizzazione
+    properties:
+      uriVasco:
+        type: string
+      tipoAutorizzazione:
+        type: string
+  TokenAutenticazione:
+    required:
+      - tokenProssimaLogin
+    properties:
+      tokenProssimaLogin:
+        type: string
+
+
+  TipoAutenticazione:
+    description: Informazioni sulla tipologia di autenticazione
+    type: object
+    properties:
+      modalitaAutenticazione:
+        type: string
+      NumeriTelefonici:
+        type: array
+        items:
+          $ref: '#/definitions/NumeroTelefono'
+
+  NumeroTelefono:
+    description: Numero di telefono per identitel
+    type: object
+    properties:
+      numeroTelefonoIdentitel:
+        type: string
+      default:
+        type: boolean
+
+  DatiTransazioneCancellazione:
+    required:
+      - token
+    properties:
+      numeroIdentitel:
+        type: string
+      token:
+        type: string
+
+
+  Error:
+    required:
+      - code
+      - message
+    properties:
+      code:
+       type: string
+      message:
+       type: string
