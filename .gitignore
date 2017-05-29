@@ -1,1 +1,13 @@
 .idea
+
+SwaggerAppGenRestEasy/target/
+
+*.iml
+
+*.log
+
+SwaggerAppGenJersey/target/
+
+AppGenSwagger/target/
+
+AppGenSwagger/\.swagger-codegen-ignore
