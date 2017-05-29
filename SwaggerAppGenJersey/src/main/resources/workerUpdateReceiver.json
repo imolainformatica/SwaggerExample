@@ -1,0 +1,407 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "workerUpdateReceiver"
+  },
+  "paths": {
+    "/core/v1/event-notification-messages": {
+      "post": {
+        "operationId": "eventNotificationMessages",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Events object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Events"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Events": {
+      "description": "List of events including the header and the link(s) to the actual event instance(s)",
+      "type": "object",
+      "properties": {
+        "events": {
+          "description": "An event instance",
+          "type": "array",
+          "items": {
+            "description": "An event instance",
+            "type": "object",
+            "properties": {
+              "eventID": {
+                "description": "The unique identifier of the event instance. This is set by the system of record once an event is recorded as in progress or complete.",
+                "type": "string"
+              },
+              "serviceCategoryCode": {
+                "description": "The service domain, e.g. HR, Payroll, Benefits, etc. This field is always present and valued based on a standard codelist.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "codeValue": {
+                    "description": "The code for the related entity.",
+                    "type": "string"
+                  },
+                  "shortName": {
+                    "description": "Short description of the related code not to exceed 25 characters",
+                    "type": "string"
+                  },
+                  "longName": {
+                    "description": "Long description of the related code",
+                    "type": "string"
+                  }
+                }
+              },
+              "eventNameCode": {
+                "description": "This is the canonical name of the event, e.g. dependent.add, worker.hire. This field is always present and valued based on a standard codelist.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "codeValue": {
+                    "description": "The code for the related entity.",
+                    "type": "string"
+                  },
+                  "shortName": {
+                    "description": "Short description of the related code not to exceed 25 characters",
+                    "type": "string"
+                  },
+                  "longName": {
+                    "description": "Long description of the related code",
+                    "type": "string"
+                  }
+                }
+              },
+              "eventTitle": {
+                "description": "The event title offers a way to describe a particular instance of an event at a level more granular than the event name, e.g. 2014 Annual Enrollment.",
+                "type": "string"
+              },
+              "eventReasonCode": {
+                "description": "This allows for further refinement of the associated event. For example, for a worker.maritalStatus.change event, the reason code could be used to describe whether it is a Marriage vs. Divorce vs. Separation. This is optional and valued as defined by the system of record.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "codeValue": {
+                    "description": "The code for the related entity.",
+                    "type": "string"
+                  },
+                  "shortName": {
+                    "description": "Short description of the related code not to exceed 25 characters",
+                    "type": "string"
+                  },
+                  "longName": {
+                    "description": "Long description of the related code",
+                    "type": "string"
+                  }
+                }
+              },
+              "eventStatusCode": {
+                "description": "This identifies the status of the event. An event that has initiated by the system of record, such as a benefits annual enrollment event, will have an event status code of created. An event that is saved in a work in progress state (as determined by the permissible state codes), will have an event status code of inProgress. An event that has been recorded, will have an event status code of complete. This is set by the system of record and valued based on a standard codeslist.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "codeValue": {
+                    "description": "The code for the related entity.",
+                    "type": "string"
+                  },
+                  "shortName": {
+                    "description": "Short description of the related code not to exceed 25 characters",
+                    "type": "string"
+                  },
+                  "longName": {
+                    "description": "Long description of the related code",
+                    "type": "string"
+                  }
+                }
+              },
+              "priorityCode": {
+                "description": "This allows the system of record to prioritize events and is valued based on a standard codelist.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "codeValue": {
+                    "description": "The code for the related entity.",
+                    "type": "string"
+                  },
+                  "shortName": {
+                    "description": "Short description of the related code not to exceed 25 characters",
+                    "type": "string"
+                  },
+                  "longName": {
+                    "description": "Long description of the related code",
+                    "type": "string"
+                  }
+                }
+              },
+              "recordDateTime": {
+                "description": "This is the date time the event is recorded in the system of record with an event status code equal to complete. This value is set by the system of record.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "creationDateTime": {
+                "description": "This is the date time the event is created. If a system of record creates the event instance, as in the case of an annual enrollment for example, then is sets the creation date time. If a user declares an event, then this is set to the date time when the first call is made to the system of record.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "effectiveDateTime": {
+                "description": "This is the effective date, or effective date time fo the event from a business perspective. In some systems, this may be referred to as the Event Date. For example, for a birth event, this is the date of birth. If there is no effective date from a business perspective, this is set equal to the record date time.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "expirationDateTime": {
+                "description": "This value is set by the system of record and used to term the life cycle of an event instance. ",
+                "type": "string",
+                "format": "date-time"
+              },
+              "dueDateTime": {
+                "description": "This value is set by the system of record and allows for the presentation of a date by which the system of record would like the user to complete the event.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "originator": {
+                "description": "An originator is a user, machine or event that triggered the event.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "applicationID": {
+                    "description": "The unique identifier of the application which originated the event.",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "idValue": {
+                        "description": "An actual ID value",
+                        "type": "string"
+                      },
+                      "schemeCode": {
+                        "description": "The scheme code",
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "codeValue": {
+                            "description": "The code for the related entity.",
+                            "type": "string"
+                          },
+                          "shortName": {
+                            "description": "Short description of the related code not to exceed 25 characters",
+                            "type": "string"
+                          },
+                          "longName": {
+                            "description": "Long description of the related code",
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "associateOID": {
+                    "description": "The unique identifier of an associate who originated the event.",
+                    "type": "string"
+                  },
+                  "formattedName": {
+                    "description": "Human readable name of the event originator",
+                    "type": "string"
+                  },
+                  "eventID": {
+                    "description": "The unique identifier of the event instance. This is generated once an event is recorded with an event status code equal to Complete. This value is set by the system of record.",
+                    "type": "string"
+                  },
+                  "eventNameCode": {
+                    "description": "This is the canonical name of the event, e.g. dependent.add, worker.hire.",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "codeValue": {
+                        "description": "The code for the related entity.",
+                        "type": "string"
+                      },
+                      "shortName": {
+                        "description": "Short description of the related code not to exceed 25 characters",
+                        "type": "string"
+                      },
+                      "longName": {
+                        "description": "Long description of the related code",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "deviceID": {
+                    "description": "The unique identifier of the device, e.g. a time clock, door entry beam.",
+                    "type": "string"
+                  }
+                }
+              },
+              "actor": {
+                "description": "The actor is the party that completed the recording of the event.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "applicationID": {
+                    "description": "The unique identifier of the application which originated the event.",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "idValue": {
+                        "description": "An actual ID value",
+                        "type": "string"
+                      },
+                      "schemeCode": {
+                        "description": "The scheme code",
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "codeValue": {
+                            "description": "The code for the related entity.",
+                            "type": "string"
+                          },
+                          "shortName": {
+                            "description": "Short description of the related code not to exceed 25 characters",
+                            "type": "string"
+                          },
+                          "longName": {
+                            "description": "Long description of the related code",
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "associateOID": {
+                    "description": "The unique identifier of an associate who originated the event.",
+                    "type": "string"
+                  },
+                  "formattedName": {
+                    "description": "Human readable name of the event actor",
+                    "type": "string"
+                  },
+                  "deviceID": {
+                    "description": "The unique identifier of the device, e.g. a time clock, door entry beam.",
+                    "type": "string"
+                  },
+                  "geoCoordinate": {
+                    "description": "The coordinates of the location of the actor",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "latitude": {
+                        "description": "The angle, in degrees, of a position on Earth above the equator. (Latitude is negative for a place below the equator.) specified in decimal degrees",
+                        "type": "number"
+                      },
+                      "longitude": {
+                        "description": "The angle, in degrees, of a position on Earth around the equator from the Greenwich Meridian specified in decimal degrees",
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "deviceUserAgentID": {
+                    "description": "Identifier of the user agent of the device used by the actor who worked on the event",
+                    "type": "string"
+                  }
+                }
+              },
+              "links": {
+                "type": "array",
+                "items": {
+                  "description": "A link description object is used to describe link relations.  In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values.  The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "href": {
+                      "description": "The URI of the related entity",
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "rel": {
+                      "description": "Indicates the nature of the relationship of the related resource to the resource that generated this representation",
+                      "type": "string",
+                      "enum": [
+                        "alternate",
+                        "create",
+                        "canonical",
+                        "describedby",
+                        "edit-form",
+                        "enclosure",
+                        "full",
+                        "related",
+                        "root",
+                        "self",
+                        "up",
+                        "search",
+                        "/adp/invoke",
+                        "/adp/image",
+                        "/adp/confirm-message",
+                        "/adp/status-monitor",
+                        "/adp/codelist",
+                        "/adp/template",
+                        "/adp/externalLink"
+                      ]
+                    },
+                    "title": {
+                      "description": "This property defines a title for the link.  The value must be a string. User agents MAY use this title when presenting the link to the user.",
+                      "type": "string"
+                    },
+                    "targetSchema": {
+                      "description": "This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.",
+                      "type": "string"
+                    },
+                    "mediaType": {
+                      "description": "The media type that the linked resource will return (Response)",
+                      "type": "string",
+                      "enum": [
+                        "application/json",
+                        "text/html",
+                        "application/pdf",
+                        "image/jpeg",
+                        "image/gif",
+                        "image/png",
+                        "application/msword",
+                        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      ]
+                    },
+                    "method": {
+                      "description": "The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)",
+                      "type": "string",
+                      "enum": [
+                        "GET",
+                        "POST",
+                        "DELETE",
+                        "PUT"
+                      ]
+                    },
+                    "encType": {
+                      "description": "If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource.  The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)",
+                      "type": "string",
+                      "enum": [
+                        "application/json",
+                        "application/x-www-form-urlencoded"
+                      ]
+                    },
+                    "schema": {
+                      "description": "This property contains a schema which defines the acceptable structure of the submitted request.  For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

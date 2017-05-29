@@ -91,11 +91,13 @@
               <goal>generate</goal>
             </goals>
             <configuration>
-              <inputSpec>src/main/resources/swagger.json</inputSpec>
+              <inputSpec>src/main/resources/workerUpdateReceiver.json</inputSpec>
               <language>jaxrs</language>
               <!--<configOptions>-->
                 <!--<sourceFolder>src/gen/java/main</sourceFolder>-->
               <!--</configOptions>-->
+              <apiPackage>it.imolinfo.adp.api</apiPackage>
+              <modelPackage>it.imolinfo.adp.api.model</modelPackage>
             </configuration>
           </execution>
         </executions>

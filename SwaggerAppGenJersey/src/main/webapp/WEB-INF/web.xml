@@ -9,7 +9,7 @@
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
     <init-param>
       <param-name>jersey.config.server.provider.packages</param-name>
-      <param-value>io.swagger.jaxrs.listing,io.swagger.api</param-value>
+      <param-value>io.swagger.jaxrs.listing,it.imolinfo.adp.api</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
@@ -27,7 +27,7 @@
     </init-param>
     <init-param>
       <param-name>swagger.api.basepath</param-name>
-      <param-value>SwaggerApp/api</param-value>
+      <param-value>SwaggerApp/webapi</param-value>
     </init-param>
     <init-param>
       <param-name>scan.all.resources</param-name>
