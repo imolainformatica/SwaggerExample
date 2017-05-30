@@ -76,6 +76,11 @@
       <artifactId>jersey-media-multipart</artifactId>
       <version>2.25.1</version>
     </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.8.5</version>
+    </dependency>
 
   </dependencies>
   <build>
@@ -87,6 +92,7 @@
         <version>2.2.1</version>
         <executions>
           <execution>
+            <phase>generate-sources</phase>
             <goals>
               <goal>generate</goal>
             </goals>
@@ -96,8 +102,34 @@
               <!--<configOptions>-->
                 <!--<sourceFolder>src/gen/java/main</sourceFolder>-->
               <!--</configOptions>-->
-              <apiPackage>it.imolinfo.adp.api</apiPackage>
+              <apiPackage>it.imolinfo.adp.api.service</apiPackage>
               <modelPackage>it.imolinfo.adp.api.model</modelPackage>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!--Swagger si aspetta dei file in target per capire cosa non rigenerare
+      https://github.com/swagger-api/swagger-codegen/issues/4514
+      -->
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <!-- here the phase you need -->
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/generated-sources/swagger</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>src/main/resources/swagger-conf</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
             </configuration>
           </execution>
         </executions>
