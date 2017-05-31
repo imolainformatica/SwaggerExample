@@ -23,6 +23,7 @@ public class AddressResources {
     public Address getAdress() {
         Address address = new Address();
         address.setAttentionOfName("pippo");
+        address.setBlockName("pippo");
         return address;
     }
 }
