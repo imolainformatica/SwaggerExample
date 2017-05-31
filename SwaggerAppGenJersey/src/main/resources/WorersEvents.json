@@ -398,27 +398,27 @@
               },
               "recordDateTime" : {
                 "description" : "This is the date time the event is recorded in the system of record with an event status code equal to complete. This value is set by the system of record",
-                "type" : "string",
+                "type" : "date",
                 "format" : "date-time"
               },
               "creationDateTime" : {
                 "description" : "This is the date time the event is created. If a system of record creates the event instance, as in the case of an annual enrollment for example, then is sets the creation date time. If a user declares an event, then this is set to the date time when the first call is made to the system of record",
-                "type" : "string",
+                "type" : "date-time",
                 "format" : "date-time"
               },
               "effectiveDateTime" : {
                 "description" : "This is the effective date, or effective date time fo the event from a business perspective. In some systems, this may be referred to as the Event Date. For example, for a birth event, this is the date of birth. If there is no effective date from a business perspective, this is set equal to the record date time",
-                "type" : "string",
+                "type" : "date-time",
                 "format" : "date-time"
               },
               "expirationDateTime" : {
                 "description" : "This value is set by the system of record and used to term the life cycle of an event instance. ",
-                "type" : "string",
+                "type" : "date-time",
                 "format" : "date-time"
               },
               "dueDateTime" : {
                 "description" : "This value is set by the system of record and allows for the presentation of a date by which the system of record would like the user to complete the event",
-                "type" : "string",
+                "type" : "date-time",
                 "format" : "date-time"
               },
               "notificationIndicator" : {
