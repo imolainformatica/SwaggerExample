@@ -44,6 +44,18 @@
       <artifactId>jackson-annotations</artifactId>
       <version>${jackson.version}</version>
     </dependency>
+    <!--custom Jackson -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <!--Log-->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.3</version>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>
@@ -51,7 +63,7 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    <!--per codice generato-->
+    <!-- Server side codice generato-->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -77,18 +89,37 @@
       <artifactId>jersey-media-multipart</artifactId>
       <version>${jersey.version}</version>
     </dependency>
-    <!--custom Jackson -->
+
+    <!-- Client side code gen -->
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>${jackson.version}</version>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.0</version>
     </dependency>
-    <!--Log-->
     <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>1.2.3</version>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.7</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
+    <dependency>
+      <groupId>com.squareup.okhttp</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>2.7.5</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/logging-interceptor -->
+    <dependency>
+      <groupId>com.squareup.okhttp</groupId>
+      <artifactId>logging-interceptor</artifactId>
+      <version>2.7.5</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+    </dependency>
+
+
   </dependencies>
   <build>
     <finalName>SwaggerApp</finalName>
@@ -99,6 +130,7 @@
         <version>2.2.1</version>
         <executions>
           <execution>
+            <id>generate-server-stub</id>
             <phase>generate-sources</phase>
             <goals>
               <goal>generate</goal>
@@ -111,6 +143,23 @@
               <!--</configOptions>-->
               <apiPackage>it.imolinfo.adp.api.service</apiPackage>
               <modelPackage>it.imolinfo.adp.api.model</modelPackage>
+            </configuration>
+          </execution>
+          <execution>
+            <id>generate-client-stub</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>src/main/resources/WorersEvents.json</inputSpec>
+              <language>java</language>
+              <!--<configOptions>-->
+              <!--<sourceFolder>src/gen/java/main</sourceFolder>-->
+              <!--</configOptions>-->
+              <apiPackage>com.adp.api.invoker.api</apiPackage>
+              <modelPackage>com.adp.api.invoker.model</modelPackage>
+              <invokerPackage>com.adp.api.invoker.client</invokerPackage>
             </configuration>
           </execution>
         </executions>
