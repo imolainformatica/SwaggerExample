@@ -1,0 +1,290 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a example for POC",
+    "version": "1.0.0",
+    "title": "Worker Events",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "gmorlini@imolinfo.it"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:8989",
+  "basePath": "/events/hr/v1",
+  "tags": [
+    {
+      "name": "worker",
+      "description": "Everything about your Worker",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/worker.personal-address.change/{event-id}": {
+      "get": {
+        "tags": [
+          "worker"
+        ],
+        "summary": "Change on personal address of worker",
+        "description": "Returns an event instance",
+        "operationId": "WorkerPersonalAddressChange",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "event-id",
+            "in": "path",
+            "description": "Event ID",
+            "required": true,
+            "example": "123"
+          },
+          {
+            "name": "associateoid",
+            "description": "Associate OID of the requestor",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "example": "G4O73G9Z62SL2NFM"
+          },
+          {
+            "name": "orgoid",
+            "description": "Organization OID of the requestor",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "SOR",
+            "description": "SOR where the call is routed to",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "SORContext",
+            "description": "Context within an SOR that the call should be routed to",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "SORUri",
+            "description": "Uri within the SOR",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "realm",
+            "description": "The identity Management Realm. E.g. ISI",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "example": "ISI"
+          },
+          {
+            "name": "roleCode",
+            "description": "The role the user is playing during the transaction. Possible values: employee,manager,practitioner,administrator,supervisor. The roleCode header will be passed in all calls. When coming from Myself capabilities rolecode=employee. When coming from Team capabilities roleCode=manager. When coming from Practitioner capabilities roleCode=practitioner.I",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "employee",
+              "manager",
+              "practitioner",
+              "administrator",
+              "supervisor"
+            ]
+          },
+          {
+            "name": "sm_serversessionid",
+            "description": "SiteMinder session ID",
+            "in": "header",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Accept-Language",
+            "description": "“Accept-Language” “: ” ( language | “*” ) [“;” “q” “=”qvalue]. Specifies the language(s) that are acceptable for the response. The optional qvalue represents a quality level for acceptable languages.",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "example": "en-US"
+          },
+          {
+            "name": "CONSUMEROOID",
+            "description": "Contains the object identifier of the organization to which the consumer application belongs. Conditions  Required/applicable security standard uses this header. Internal to ADP",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "CONSUMERAOID",
+            "description": "Contains the object identifier of the application that is consuming the Web API. Conditions  Required/applicable security standard uses this header.  Internal to ADP",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ConsumerAppOID",
+            "description": "Identifier for the service consumer application. This header is required, if Actor (Service Consumer) is an application or Internal to ADP. ",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ADP-Act-As-OrgOID",
+            "description": "Org OID for Organization of the Associate that the Actor is Acting As",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ADP-Act-As-AssociateOID",
+            "description": "Associate OID for the Associate that the Actor is Acting As",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ADP-On-Behalf-Of-OrgOID",
+            "description": "Org OID for Organization of the Associate that the Actor is acting On Behalf Of",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ADP-On-Behalf-Of-AssociateOID",
+            "description": "Associate OID for the Associate that the Actor is acting On Behalf Of",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ADP-Acting-SessionID",
+            "description": "Session ID for the acting session, Act-As and act On-Behalf-Off",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "originatingEventID",
+            "in": "query",
+            "description": "Returns event instances which were initiated by the same originating event id.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "relatedEventID",
+            "in": "query",
+            "description": "Returns event instances which were related to the event id.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "headers": {
+              "ETag": {
+                "type": "string",
+                "description": "Defines the entity tag for use with the If-Match and If-None-Match request headers."
+              },
+              "Cache-Control": {
+                "type": "string",
+                "description": "Specifies directives that must be obeyed by all caching mechanisms along the request/response chain."
+              },
+              "Content-Language": {
+                "type": "string",
+                "description": "Specifies the languages for which the entity-body is intended."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "type or subtype. Describes the media type and subtype of an entity-body."
+              },
+              "ADP-Acting-SessionID": {
+                "type": "string",
+                "description": "Session ID for the acting session, Act-As and act On-Behalf-Off"
+              },
+              "ADP-Acting-Session-Expires": {
+                "type": "string",
+                "description": "Specifies the date and time the representational state of the resource is considered stale. Session ID for the acting session, Act-As and act On-Behalf-Off"
+              }
+            },
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/WorkerPersonalAddressChangeEvent"
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "304": {
+            "description": "Not Modified"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/WorkerPersonalAddressChangeEvent"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/WorkerPersonalAddressChangeEvent"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/WorkerPersonalAddressChangeEvent"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed",
+            "schema": {
+              "$ref": "#/definitions/WorkerPersonalAddressChangeEvent"
+            }
+          },
+          "406": {
+            "description": "Not Acceptable",
+            "schema": {
+              "$ref": "#/definitions/WorkerPersonalAddressChangeEvent"
+            }
+          },
+          "412": {
+            "description": "Precondition Failed",
+            "schema": {
+              "$ref": "#/definitions/WorkerPersonalAddressChangeEvent"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/WorkerPersonalAddressChangeEvent"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "WorkerPersonalAddressChangeEvent": null,
+    "type": "object"
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

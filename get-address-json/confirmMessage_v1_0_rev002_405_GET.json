@@ -1,0 +1,60 @@
+{
+  "confirmMessage" : {
+    "confirmMessageID" : {
+      "idValue" : "12312321",
+      "schemeName" : "confirmMessageID",
+      "schemeAgencyName" : "WFN"
+    },
+    "createDateTime" : "2013-06-24T15:30:01-06:00",
+    "requestReceiptDateTime" : "2013-06-24T15:30:00-06:00",
+    "protocolStatusCode" : {
+      "codeValue" : "405"
+    },
+    "protocolCode" : {
+      "codeValue" : "http"
+    },
+    "requestStatusCode" : {
+      "codeValue" : "failed"
+    },
+    "requestMethodCode" : {
+      "codeValue" : "GET"
+    },
+    "sessionID" : {
+      "idValue" : "1312321321312321",
+      "schemeName" : "sessionID",
+      "schemeAgencyName" : "WFN"
+    },
+    "requestETag" : "A1231234324",
+    "requestLink" : {
+      "href" : "/hr/v1/associates/A3242342342134/addresses/123",
+      "rel" : "related",
+      "method" : "GET"
+    },
+    "resourceMessages" : [ {
+      "resourceMessageID" : {
+        "idValue" : "12312321",
+        "schemeName" : "processMessageID",
+        "schemeAgencyName" : "WFN"
+      },
+      "resourceStatusCode" : {
+        "codeValue" : "failed"
+      },
+      "processMessages" : [ {
+        "processMessageID" : {
+          "idValue" : "12312321",
+          "schemeName" : "processMessageID",
+          "schemeAgencyName" : "WFN"
+        },
+        "resourceStatusCode" : {
+          "codeValue" : "failed"
+        },
+        "messageTypeCode" : {
+          "codeValue" : "error"
+        },
+        "userMessage" : {
+          "messageTxt" : "The request method is not allowed for the resource identified by the request URI."
+        }
+      } ]
+    } ]
+  }
+}

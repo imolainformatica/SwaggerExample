@@ -1,0 +1,63 @@
+{
+  "events" : [ {
+    "eventID" : "123",
+    "serviceCategoryCode" : {
+      "codeValue" : "hr"
+    },
+    "eventNameCode" : {
+      "codeValue" : "worker.personalAddress.change"
+    },
+    "eventStatusCode" : {
+      "codeValue" : "completed"
+    },
+    "recordDateTime" : "2014-01-01T00:00:00Z",
+    "creationDateTime" : "2014-01-01T00:00:00Z",
+    "effectiveDateTime" : "2014-01-01T00:00:00Z",
+    "originator" : {
+      "associateOID" : "G4O73G9Z62SL2NFM",
+      "formattedName" : "Anthony Albright",
+      "deviceID" : "ABC123XYZ"
+    },
+    "actor" : {
+      "associateOID" : "G4O73G9Z62SL2NFM",
+      "formattedName" : "Anthony Albright",
+      "deviceID" : "ABC123XYZ"
+    },
+    "data" : {
+      "eventContext" : {
+        "worker" : {
+          "associateOID" : "G4O73G9Z62SL2NFM"
+        }
+      },
+      "output" : {
+        "worker" : {
+          "associateOID" : "G4O73G9Z62SL2NFM",
+          "workerID" : {
+            "idValue" : "1000199",
+            "schemeCode" : {
+              "codeValue" : "EID",
+              "shortName" : "Employee ID"
+            }
+          },
+          "person" : {
+            "personalAddress" : {
+              "nameCode" : {
+                "codeValue" : "SH",
+                "shortName" : "Summer House"
+              },
+              "lineOne" : "1301 Ocean Avenue",
+              "cityName" : "Beach Haven",
+              "countrySubdivisionLevel1" : {
+                "subdivisionType" : "state",
+                "codeValue" : "NJ",
+                "shortName" : "New Jersey"
+              },
+              "countryCode" : "US",
+              "postalCode" : "08008"
+            }
+          }
+        }
+      }
+    }
+  } ]
+}

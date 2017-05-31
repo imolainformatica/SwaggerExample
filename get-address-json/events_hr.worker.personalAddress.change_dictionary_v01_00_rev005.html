@@ -1,0 +1,2541 @@
+<html>
+ <head></head>
+ <body>
+  <table class="doctable">
+   <thead>
+    <tr>
+     <td>JSON Path</td>
+     <td>Type</td>
+     <td>Description</td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="name">/events</td>
+     <td class="type">array</td>
+     <td class="name">An instance to capture an event when a worker personal address changed</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of the event instance. This is set by the system of record once an event is recorded as in progress or complete</td>
+    </tr>
+    <tr>
+     <td class="name">/events/serviceCategoryCode</td>
+     <td class="type">object</td>
+     <td class="name">The service domain, e.g. HR, Payroll, Benefits, etc. This field is always present and valued based on a standard codelist</td>
+    </tr>
+    <tr>
+     <td class="name">/events/serviceCategoryCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/serviceCategoryCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/serviceCategoryCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventNameCode</td>
+     <td class="type">object</td>
+     <td class="name">This is the canonical name of the event, e.g. dependent.add, worker.hire. This field is always present and valued based on a standard codelist</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventNameCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventNameCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventNameCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventTitle</td>
+     <td class="type">string</td>
+     <td class="name">The event title offers a way to describe a particular instance of an event at a level more granular than the event name, e.g. 2014 Annual Enrollment</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventSubTitle</td>
+     <td class="type">string</td>
+     <td class="name">The event sub title provides event instance summary details, e.g. All Annual Enrollment elections become effective on January 1, 2014</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventReasonCode</td>
+     <td class="type">object</td>
+     <td class="name">This allows for further refinement of the associated event. For example, for a worker.maritalStatus.change event, the reason code could be used to describe whether it is a Marriage or Divorce. This is optional and valued as defined by the system of record</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventReasonCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventReasonCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventReasonCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventStatusCode</td>
+     <td class="type">object</td>
+     <td class="name">This identifies the status of the event. An event that has been initiated by the system of record will have an event status code of created. An event that is saved in a work in progress state will have an event status code of inProgress. An event that has been recorded will have an event status code of complete. These values are set by the system of record and valued based on a standard codeslist</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventStatusCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventStatusCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/eventStatusCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/priorityCode</td>
+     <td class="type">object</td>
+     <td class="name">This allows the system of record to prioritize events and is valued based on a standard codelist</td>
+    </tr>
+    <tr>
+     <td class="name">/events/priorityCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/priorityCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/priorityCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/recordDateTime</td>
+     <td class="type">string[date-time]</td>
+     <td class="name">This is the date time the event is recorded in the system of record with an event status code equal to complete. This value is set by the system of record</td>
+    </tr>
+    <tr>
+     <td class="name">/events/creationDateTime</td>
+     <td class="type">string[date-time]</td>
+     <td class="name">This is the date time the event is created. If a system of record creates the event instance, as in the case of an annual enrollment for example, then is sets the creation date time. If a user declares an event, then this is set to the date time when the first call is made to the system of record</td>
+    </tr>
+    <tr>
+     <td class="name">/events/effectiveDateTime</td>
+     <td class="type">string[date-time]</td>
+     <td class="name">This is the effective date, or effective date time fo the event from a business perspective. In some systems, this may be referred to as the Event Date. For example, for a birth event, this is the date of birth. If there is no effective date from a business perspective, this is set equal to the record date time</td>
+    </tr>
+    <tr>
+     <td class="name">/events/expirationDateTime</td>
+     <td class="type">string[date-time]</td>
+     <td class="name">This value is set by the system of record and used to term the life cycle of an event instance. </td>
+    </tr>
+    <tr>
+     <td class="name">/events/dueDateTime</td>
+     <td class="type">string[date-time]</td>
+     <td class="name">This value is set by the system of record and allows for the presentation of a date by which the system of record would like the user to complete the event</td>
+    </tr>
+    <tr>
+     <td class="name">/events/notificationIndicator</td>
+     <td class="type">boolean</td>
+     <td class="name">Are we sending update emails as the advance is processed?</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator</td>
+     <td class="type">object</td>
+     <td class="name">An originator is a user, machine or event that triggered the event</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/applicationID</td>
+     <td class="type">object</td>
+     <td class="name">The unique identifier of the application which originated the event or a process</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/applicationID/idValue</td>
+     <td class="type">string</td>
+     <td class="name">An actual ID value</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/applicationID/schemeCode</td>
+     <td class="type">object</td>
+     <td class="name">The scheme code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/applicationID/schemeCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/applicationID/schemeCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/applicationID/schemeCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/associateOID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of an associate who originated the event.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/personOID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of a person who originated the event or a process</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/formattedName</td>
+     <td class="type">string</td>
+     <td class="name">Human readable name of the event originator</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/eventID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of the event instance. This is generated once an event is recorded with an event status code equal to Complete. This value is set by the system of record.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/eventNameCode</td>
+     <td class="type">object</td>
+     <td class="name">This is the canonical name of the event, e.g. dependent.add, worker.hire</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/eventNameCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/eventNameCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/eventNameCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/originator/deviceID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of the device, e.g. a time clock, door entry beam</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor</td>
+     <td class="type">object</td>
+     <td class="name">The actor is the party that completed the recording of the event</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/applicationID</td>
+     <td class="type">object</td>
+     <td class="name">The unique identifier of the application which originated the event.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/applicationID/idValue</td>
+     <td class="type">string</td>
+     <td class="name">An actual ID value</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/applicationID/schemeCode</td>
+     <td class="type">object</td>
+     <td class="name">The scheme code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/applicationID/schemeCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/applicationID/schemeCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/applicationID/schemeCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/associateOID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of an associate who originated the event or a process</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/personOID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of a person who originated the event or a process</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/formattedName</td>
+     <td class="type">string</td>
+     <td class="name">Human readable name of the actor</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/deviceID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of the device, e.g. a time clock, door entry beam.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/geoCoordinate</td>
+     <td class="type">object</td>
+     <td class="name">The coordinates of the location of the actor</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/geoCoordinate/latitude</td>
+     <td class="type">number</td>
+     <td class="name">The angle, in degrees, of a position on Earth above the equator. (Latitude is negative for a place below the equator.) specified in decimal degrees</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/geoCoordinate/longitude</td>
+     <td class="type">number</td>
+     <td class="name">The angle, in degrees, of a position on Earth around the equator from the Greenwich Meridian specified in decimal degrees</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actor/deviceUserAgentID</td>
+     <td class="type">string</td>
+     <td class="name">Identifier of the user agent of the device used by the actor who worked on the event or process</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty</td>
+     <td class="type">object</td>
+     <td class="name">The party (client employee) information that the actor is acting as to complete the recording of the event. Example: An ADP Support User (principal A = Actor) views data within an ADP Application as a client employee (principal B) in read only mode.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/applicationID</td>
+     <td class="type">object</td>
+     <td class="name">The unique identifier of the application which originated the event.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/applicationID/idValue</td>
+     <td class="type">string</td>
+     <td class="name">An actual ID value</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/applicationID/schemeCode</td>
+     <td class="type">object</td>
+     <td class="name">The scheme code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/applicationID/schemeCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/applicationID/schemeCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/applicationID/schemeCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/associateOID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of an associate who originated the event or a process</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/personOID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of a person who originated the event or a process</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/formattedName</td>
+     <td class="type">string</td>
+     <td class="name">Human readable name of the actor</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/deviceID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of the device, e.g. a time clock, door entry beam.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/geoCoordinate</td>
+     <td class="type">object</td>
+     <td class="name">The coordinates of the location of the actor</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/geoCoordinate/latitude</td>
+     <td class="type">number</td>
+     <td class="name">The angle, in degrees, of a position on Earth above the equator. (Latitude is negative for a place below the equator.) specified in decimal degrees</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/geoCoordinate/longitude</td>
+     <td class="type">number</td>
+     <td class="name">The angle, in degrees, of a position on Earth around the equator from the Greenwich Meridian specified in decimal degrees</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/deviceUserAgentID</td>
+     <td class="type">string</td>
+     <td class="name">Identifier of the user agent of the device used by the actor who worked on the event or process</td>
+    </tr>
+    <tr>
+     <td class="name">/events/actAsParty/organizationOID</td>
+     <td class="type">string</td>
+     <td class="name">A unique identifier of a client employee's organization id</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty</td>
+     <td class="type">object</td>
+     <td class="name">The party (client employee) that the actor is acting on behalf of to complete the recording of the event. Example: An ADP Support User (principal A = Actor) views data within an ADP Application as a client employee (principal B) and can take action on that person's behalf. The Actor may have access to certain features or screens that the Client Employee cannot view, e.g. diagnostics screens.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/applicationID</td>
+     <td class="type">object</td>
+     <td class="name">The unique identifier of the application which originated the event.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/applicationID/idValue</td>
+     <td class="type">string</td>
+     <td class="name">An actual ID value</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/applicationID/schemeCode</td>
+     <td class="type">object</td>
+     <td class="name">The scheme code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/applicationID/schemeCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/applicationID/schemeCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/applicationID/schemeCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/associateOID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of an associate who originated the event or a process</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/personOID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of a person who originated the event or a process</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/formattedName</td>
+     <td class="type">string</td>
+     <td class="name">Human readable name of the actor</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/deviceID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of the device, e.g. a time clock, door entry beam.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/geoCoordinate</td>
+     <td class="type">object</td>
+     <td class="name">The coordinates of the location of the actor</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/geoCoordinate/latitude</td>
+     <td class="type">number</td>
+     <td class="name">The angle, in degrees, of a position on Earth above the equator. (Latitude is negative for a place below the equator.) specified in decimal degrees</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/geoCoordinate/longitude</td>
+     <td class="type">number</td>
+     <td class="name">The angle, in degrees, of a position on Earth around the equator from the Greenwich Meridian specified in decimal degrees</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/deviceUserAgentID</td>
+     <td class="type">string</td>
+     <td class="name">Identifier of the user agent of the device used by the actor who worked on the event or process</td>
+    </tr>
+    <tr>
+     <td class="name">/events/onBehalfOfParty/organizationOID</td>
+     <td class="type">string</td>
+     <td class="name">A unique identifier of a client employee's organization id</td>
+    </tr>
+    <tr>
+     <td class="name">/events/links</td>
+     <td class="type">array</td>
+     <td class="name">A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links</td>
+    </tr>
+    <tr>
+     <td class="name">/events/links/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/links/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/events/links/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/links/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/links/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/links/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/links/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/links/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/links/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/events/links/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/events/links/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data</td>
+     <td class="type">object</td>
+     <td class="name">Event Data</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/eventContext</td>
+     <td class="type">object</td>
+     <td class="name">Data which sets the context for the event. That is, the keys which set context</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/eventContext/contextExpressionID</td>
+     <td class="type">string</td>
+     <td class="name">A globally unique (GUID) identifier of the context expression. This conveys the context of the associated data. For example, if the context is set to Germany, the data would adhere to the business rules and formatting rules relevant to Germany</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/eventContext/worker</td>
+     <td class="type">object</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/eventContext/worker/associateOID</td>
+     <td class="type">string</td>
+     <td class="name">A unique identifier of a covered individual when there is an AOID</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/eventContext/worker/person</td>
+     <td class="type">object</td>
+     <td class="name">An associate is a person with a relationship to an organization</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/eventContext/worker/person/personalAddress</td>
+     <td class="type">object</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/eventContext/worker/person/personalAddress/itemID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of the object in a collection</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform</td>
+     <td class="type">object</td>
+     <td class="name">Data which is transformed as a result of the event</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/eventReasonCode</td>
+     <td class="type">object</td>
+     <td class="name">This allows for further refinement of the associated event. For example, for a worker.maritalStatus.change event, the reason code could be used to describe whether it is a Marriage vs. Divorce vs. Separation</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/eventReasonCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/eventReasonCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/eventReasonCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/eventStatusCode</td>
+     <td class="type">object</td>
+     <td class="name">This identifies the status of the event. An event that has been created, either by the system of record or as the result of a user, will have an event status code of Created. An event that is saved in a work in progress state (as determined by the permissable state codes), will have an event status code of InProgress. An event that has been recorded, will have an event status code of Complete. This value is set by the system of record</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/eventStatusCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/eventStatusCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/eventStatusCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/effectiveDateTime</td>
+     <td class="type">string[date-time]</td>
+     <td class="name">This is the effective date, or effective date time fo the event from a business perspective. In some systems, this may be referred to as the Event Date. For example, for a birth event, this is the date of birth. If there is no effective date from a business perspective, this is set equal to the record date time</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/notificationIndicator</td>
+     <td class="type">boolean</td>
+     <td class="name">Are we sending update emails as the advance is processed?</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker</td>
+     <td class="type">object</td>
+     <td class="name">A worker is someone who performs duties and has responsibilities for an organization</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person</td>
+     <td class="type">object</td>
+     <td class="name">An associate is a person with a relationship to an organization</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress</td>
+     <td class="type">object</td>
+     <td class="name">A residential address. Could be the same as primary residential address that is used by an organization for payroll, taxation, and benefit program eligibility</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/scriptCode</td>
+     <td class="type">object</td>
+     <td class="name">The type of script the in which the associated entity is represented. Associated codelist is ISO15924-A. Use the alpha-4 representation versus the single digit numeric representation. Format is lowercase with initial letter capitalized. For example, Cyrillic is Cyrl</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/scriptCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/scriptCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/scriptCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/lineFour</td>
+     <td class="type">string</td>
+     <td class="name">Line Four of Street Address Information</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/lineFive</td>
+     <td class="type">string</td>
+     <td class="name">Line Five of Street Address Information</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/buildingNumber</td>
+     <td class="type">string</td>
+     <td class="name">The number of a building in the context of a physical address, e.g. House Number</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/buildingName</td>
+     <td class="type">string</td>
+     <td class="name">The name of a building in the context of a physical address, e.g. Rockefeller Center</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/blockName</td>
+     <td class="type">string</td>
+     <td class="name">The name the block</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/streetName</td>
+     <td class="type">string</td>
+     <td class="name">The name of the street</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/streetTypeCode</td>
+     <td class="type">object</td>
+     <td class="name">The type of street, e.g. Lane, Passage, Way</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/streetTypeCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/streetTypeCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/streetTypeCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/unit</td>
+     <td class="type">string</td>
+     <td class="name">A unit in the context of an address, e.g. an Apartment Number or an Office</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/floor</td>
+     <td class="type">string</td>
+     <td class="name">A floor in the context of an address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/stairCase</td>
+     <td class="type">string</td>
+     <td class="name">A reference to a particular staircase in the context of an address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/door</td>
+     <td class="type">string</td>
+     <td class="name">A reference to a particular door in the context of an address. e.g. Apartment Number</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/postOfficeBox</td>
+     <td class="type">string</td>
+     <td class="name">A post office box</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/deliveryPoint</td>
+     <td class="type">string</td>
+     <td class="name">A way to identify a specific delivery location, e.g. a mail-stop</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/plotID</td>
+     <td class="type">string</td>
+     <td class="name">A way to identify a building plot, e.g. a specific building construction site</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/countrySubdivisionLevel2</td>
+     <td class="type">object</td>
+     <td class="name">A country subdivision correlating to a administrative level two levels below country. For example, in the United States, this might be a county</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/countrySubdivisionLevel2/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/countrySubdivisionLevel2/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/countrySubdivisionLevel2/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/countrySubdivisionLevel2/subdivisionType</td>
+     <td class="type">string</td>
+     <td class="name">The type of a country sub-division, e.g. state, county</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/nameCode</td>
+     <td class="type">object</td>
+     <td class="name">A descriptive coded name of the address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/nameCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/nameCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/nameCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/attentionOfName</td>
+     <td class="type">string</td>
+     <td class="name">Attention of Name</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/careOfName</td>
+     <td class="type">string</td>
+     <td class="name">Care Of Name</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/lineOne</td>
+     <td class="type">string</td>
+     <td class="name">Line One of Street Address Information</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/lineTwo</td>
+     <td class="type">string</td>
+     <td class="name">Line Two of Street Address Information</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/lineThree</td>
+     <td class="type">string</td>
+     <td class="name">Line Three of Street Address Information</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/cityName</td>
+     <td class="type">string</td>
+     <td class="name">A city in the context of an address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/countrySubdivisionLevel1</td>
+     <td class="type">object</td>
+     <td class="name">A country subdivision correlating to a administrative level one level below country. For example, in the United States, this would be a state</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/countrySubdivisionLevel1/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/countrySubdivisionLevel1/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/countrySubdivisionLevel1/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/countrySubdivisionLevel1/subdivisionType</td>
+     <td class="type">string</td>
+     <td class="name">The type of a country sub-division, e.g. state, county</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/countryCode</td>
+     <td class="type">string</td>
+     <td class="name">A simple (string) code. Can have a code list reference</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/postalCode</td>
+     <td class="type">string</td>
+     <td class="name">The string of characters used to identify the postal code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/geoCoordinate</td>
+     <td class="type">object</td>
+     <td class="name">The coordinates of the location of the address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/geoCoordinate/latitude</td>
+     <td class="type">number</td>
+     <td class="name">The angle, in degrees, of a position on Earth above the equator. (Latitude is negative for a place below the equator.) specified in decimal degrees</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/geoCoordinate/longitude</td>
+     <td class="type">number</td>
+     <td class="name">The angle, in degrees, of a position on Earth around the equator from the Greenwich Meridian specified in decimal degrees</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressIndicator</td>
+     <td class="type">boolean</td>
+     <td class="name">This indicator is used to support the ability to say that one address is the same as another. For example, the address of a dependent is the same as that of a worker. If a given system supports this functionality, this field should be present and set to true. The meta component associated to an event that allows for the adding or changing of an address, should use the links array associated to the indicator to define the list of addresses from which the user can select to set the address in context to be the same as.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink</td>
+     <td class="type">object</td>
+     <td class="name">This link is used in conjunction with the sameAsAddressIndicator. If a given system support same as address functionality, this link will point to the address that a user has selected as being the same as the one in context. For example, if the address in context is a dependent address, and the user has indicated that the dependent address is the same as the legal address of the worker, this link would point to worker/id/person/legalAddress.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/worker/person/personalAddress/sameAsAddressLink/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments</td>
+     <td class="type">array</td>
+     <td class="name">The attachments related to the Worker Personal Address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/nameCode</td>
+     <td class="type">object</td>
+     <td class="name">A coded name or descriptive label of the associated entity. If this is a coded value, codeValue and shortName should be used. If this is just a string value, only shortName is necessary </td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/nameCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/nameCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/nameCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink</td>
+     <td class="type">object</td>
+     <td class="name">A link to the related attachment</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/attachmentLink/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/textValue</td>
+     <td class="type">string</td>
+     <td class="name">A text representation of the related attachment</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/transform/attachments/itemID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of the object in a collection</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output</td>
+     <td class="type">object</td>
+     <td class="name">Result of the event</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker</td>
+     <td class="type">object</td>
+     <td class="name">A worker is someone who performs duties and has responsibilities for an organization</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/associateOID</td>
+     <td class="type">string</td>
+     <td class="name">A unique identifier of an associate</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/workerID</td>
+     <td class="type">object</td>
+     <td class="name">An identifier for a worker, e.g. an Employee ID</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/workerID/idValue</td>
+     <td class="type">string</td>
+     <td class="name">An actual ID value</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/workerID/schemeCode</td>
+     <td class="type">object</td>
+     <td class="name">The scheme code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/workerID/schemeCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/workerID/schemeCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/workerID/schemeCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person</td>
+     <td class="type">object</td>
+     <td class="name">An associate is a person with a relationship to an organization</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress</td>
+     <td class="type">object</td>
+     <td class="name">This is the primary residential address that is used by an organization for payroll, taxation, and benefit program eligibility</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressIndicator</td>
+     <td class="type">boolean</td>
+     <td class="name">This indicator is used to support the ability to say that one address is the same as another. For example, the address of a dependent is the same as that of a worker. If a given system supports this functionality, this field should be present and set to true. The meta component associated to an event that allows for the adding or changing of an address, should use the links array associated to the indicator to define the list of addresses from which the user can select to set the address in context to be the same as.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink</td>
+     <td class="type">object</td>
+     <td class="name">This link is used in conjunction with the sameAsAddressIndicator. If a given system support same as address functionality, this link will point to the address that a user has selected as being the same as the one in context. For example, if the address in context is a dependent address, and the user has indicated that the dependent address is the same as the legal address of the worker, this link would point to worker/id/person/legalAddress.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/sameAsAddressLink/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/nameCode</td>
+     <td class="type">object</td>
+     <td class="name">A descriptive coded name of the address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/nameCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/nameCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/nameCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/attentionOfName</td>
+     <td class="type">string</td>
+     <td class="name">Attention of Name</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/careOfName</td>
+     <td class="type">string</td>
+     <td class="name">Care Of Name</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/lineOne</td>
+     <td class="type">string</td>
+     <td class="name">Line One of Street Address Information</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/lineTwo</td>
+     <td class="type">string</td>
+     <td class="name">Line Two of Street Address Information</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/lineThree</td>
+     <td class="type">string</td>
+     <td class="name">Line Three of Street Address Information</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/cityName</td>
+     <td class="type">string</td>
+     <td class="name">A city in the context of an address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/countrySubdivisionLevel1</td>
+     <td class="type">object</td>
+     <td class="name">A country subdivision correlating to a administrative level one level below country. For example, in the United States, this would be a state</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/countrySubdivisionLevel1/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/countrySubdivisionLevel1/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/countrySubdivisionLevel1/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/countrySubdivisionLevel1/subdivisionType</td>
+     <td class="type">string</td>
+     <td class="name">The type of a country sub-division, e.g. state, county</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/countryCode</td>
+     <td class="type">string</td>
+     <td class="name">A simple (string) code. Can have a code list reference</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/postalCode</td>
+     <td class="type">string</td>
+     <td class="name">The string of characters used to identify the postal code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/geoCoordinate</td>
+     <td class="type">object</td>
+     <td class="name">The coordinates of the location of the address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/geoCoordinate/latitude</td>
+     <td class="type">number</td>
+     <td class="name">The angle, in degrees, of a position on Earth above the equator. (Latitude is negative for a place below the equator.) specified in decimal degrees</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/geoCoordinate/longitude</td>
+     <td class="type">number</td>
+     <td class="name">The angle, in degrees, of a position on Earth around the equator from the Greenwich Meridian specified in decimal degrees</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/scriptCode</td>
+     <td class="type">object</td>
+     <td class="name">The type of script the in which the associated entity is represented. Associated codelist is ISO15924-A. Use the alpha-4 representation versus the single digit numeric representation. Format is lowercase with initial letter capitalized. For example, Cyrillic is Cyrl</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/scriptCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/scriptCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/scriptCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/lineFour</td>
+     <td class="type">string</td>
+     <td class="name">Line Four of Street Address Information</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/lineFive</td>
+     <td class="type">string</td>
+     <td class="name">Line Five of Street Address Information</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/buildingNumber</td>
+     <td class="type">string</td>
+     <td class="name">The number of a building in the context of a physical address, e.g. House Number</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/buildingName</td>
+     <td class="type">string</td>
+     <td class="name">The name of a building in the context of a physical address, e.g. Rockefeller Center</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/blockName</td>
+     <td class="type">string</td>
+     <td class="name">The name the block</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/streetName</td>
+     <td class="type">string</td>
+     <td class="name">The name of the street</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/streetTypeCode</td>
+     <td class="type">object</td>
+     <td class="name">The type of street, e.g. Lane, Passage, Way</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/streetTypeCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/streetTypeCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/streetTypeCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/unit</td>
+     <td class="type">string</td>
+     <td class="name">A unit in the context of an address, e.g. an Apartment Number or an Office</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/floor</td>
+     <td class="type">string</td>
+     <td class="name">A floor in the context of an address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/stairCase</td>
+     <td class="type">string</td>
+     <td class="name">A reference to a particular staircase in the context of an address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/door</td>
+     <td class="type">string</td>
+     <td class="name">A reference to a particular door in the context of an address. e.g. Apartment Number</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/postOfficeBox</td>
+     <td class="type">string</td>
+     <td class="name">A post office box</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/deliveryPoint</td>
+     <td class="type">string</td>
+     <td class="name">A way to identify a specific delivery location, e.g. a mail-stop</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/plotID</td>
+     <td class="type">string</td>
+     <td class="name">A way to identify a building plot, e.g. a specific building construction site</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/countrySubdivisionLevel2</td>
+     <td class="type">object</td>
+     <td class="name">A country subdivision correlating to a administrative level two levels below country. For example, in the United States, this might be a county</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/countrySubdivisionLevel2/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/countrySubdivisionLevel2/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/countrySubdivisionLevel2/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/countrySubdivisionLevel2/subdivisionType</td>
+     <td class="type">string</td>
+     <td class="name">The type of a country sub-division, e.g. state, county</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/itemID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of the object in a collection</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/typeCode</td>
+     <td class="type">object</td>
+     <td class="name">The type of the related address entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/typeCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/typeCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/worker/person/personalAddress/typeCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments</td>
+     <td class="type">array</td>
+     <td class="name">The attachments related to the Worker Personal Address</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/nameCode</td>
+     <td class="type">object</td>
+     <td class="name">A coded name or descriptive label of the associated entity. If this is a coded value, codeValue and shortName should be used. If this is just a string value, only shortName is necessary </td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/nameCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/nameCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/nameCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink</td>
+     <td class="type">object</td>
+     <td class="name">A link to the related attachment</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/attachmentLink/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/textValue</td>
+     <td class="type">string</td>
+     <td class="name">A text representation of the related attachment</td>
+    </tr>
+    <tr>
+     <td class="name">/events/data/output/attachments/itemID</td>
+     <td class="type">string</td>
+     <td class="name">The unique identifier of the object in a collection</td>
+    </tr>
+    <tr>
+     <td class="name">/meta</td>
+     <td class="type">object</td>
+     <td class="name">Meta contains the metadata associated with a response. A GET response may include metadata to support pagination</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/startSequence</td>
+     <td class="type">integer</td>
+     <td class="name">The instance resource sequence (number) identifying the first resource returned in the response. The server generates this sequence. It is used by the client to determine the start sequence of the subsequent Get request</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/completeIndicator</td>
+     <td class="type">boolean</td>
+     <td class="name">Indicates whether the response completes the return of all of the resources of the instance resource set to the requesting system</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/totalNumber</td>
+     <td class="type">integer</td>
+     <td class="name">Number of total instance resources in an instance resource set. Note: An instance resource set is a set of instance resources that is determined by a server to satisfy the sets membership criteria (i.e., selection, filter, expansion and search criteria) of a resource management operation (e.g. GET request) upon a collection resource</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/resourceSetID</td>
+     <td class="type">string</td>
+     <td class="name">Unique identifier of the instance resource set. It is generated by the server as a result of the original Get request</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links</td>
+     <td class="type">array</td>
+     <td class="name">A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the linksA link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/meta/links/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage</td>
+     <td class="type">object</td>
+     <td class="name">The ConfirmMessage contains the processing results for the corresponding request. A request may have its processing reported as: succeeded, partially failed, or failed.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/confirmMessageID</td>
+     <td class="type">object</td>
+     <td class="name">An identifier for the instance of the confirm message.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/confirmMessageID/idValue</td>
+     <td class="type">string</td>
+     <td class="name">An ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/confirmMessageID/schemeName</td>
+     <td class="type">string</td>
+     <td class="name">The type of ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/confirmMessageID/schemeAgencyName</td>
+     <td class="type">string</td>
+     <td class="name">The agency that issues the ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/createDateTime</td>
+     <td class="type">string[date-time]</td>
+     <td class="name">The date &amp; time that the message instance was generated.; follows the ISO-8601:2000 format: 2008-05-11T15:30:00-06:00.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestReceiptDateTime</td>
+     <td class="type">string[date-time]</td>
+     <td class="name">The date &amp; time that the request submitted by the client was received. Note, this timestamp may not be the same as the time the client actually submitted the request if there is a queuing mechanism between the client and server processing the request; it follows the ISO-8601:2000 format: 2008-05-11T15:30:00-06:00.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/protocolStatusCode</td>
+     <td class="type">object</td>
+     <td class="name">Protocol-specific response status code.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/protocolStatusCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/protocolStatusCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code not to exceed 25 characters</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/protocolStatusCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/protocolCode</td>
+     <td class="type">object</td>
+     <td class="name">Code that identifies the protocol used for the request.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/protocolCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/protocolCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code not to exceed 25 characters</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/protocolCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestID</td>
+     <td class="type">object</td>
+     <td class="name">The identifier of the request that generated this response.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestID/idValue</td>
+     <td class="type">string</td>
+     <td class="name">An ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestID/schemeName</td>
+     <td class="type">string</td>
+     <td class="name">The type of ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestID/schemeAgencyName</td>
+     <td class="type">string</td>
+     <td class="name">The agency that issues the ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestStatusCode</td>
+     <td class="type">object</td>
+     <td class="name">The process results status code for the request.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestStatusCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestStatusCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestStatusCode/codeValue</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;succeeded&quot;,&quot;partiallyFailed&quot;,&quot;failed&quot;]</td>
+     <td class="name">The code for the related entity.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestMethodCode</td>
+     <td class="type">object</td>
+     <td class="name">The method that was used on the request corresponding to this message instance.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestMethodCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestMethodCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestMethodCode/codeValue</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;PUT&quot;,&quot;POST&quot;,&quot;PATCH&quot;,&quot;DELETE&quot;]</td>
+     <td class="name">The code for the related entity.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/sessionID</td>
+     <td class="type">object</td>
+     <td class="name">A session identifier if one is available.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/sessionID/idValue</td>
+     <td class="type">string</td>
+     <td class="name">An ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/sessionID/schemeName</td>
+     <td class="type">string</td>
+     <td class="name">The type of ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/sessionID/schemeAgencyName</td>
+     <td class="type">string</td>
+     <td class="name">The agency that issues the ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestETag</td>
+     <td class="type">string</td>
+     <td class="name">The entity tag of the entity in the request.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink</td>
+     <td class="type">object</td>
+     <td class="name">The link of the request that generated this response.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/requestLink/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processingStatusCode</td>
+     <td class="type">object</td>
+     <td class="name">Processing status of the related request message.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processingStatusCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processingStatusCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processingStatusCode/codeValue</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;received&quot;,&quot;validated&quot;,&quot;started&quot;,&quot;completed&quot;]</td>
+     <td class="name">The code for the related entity.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages</td>
+     <td class="type">array</td>
+     <td class="name">processMessage is optional and contains processing information for either the request (at the ConfirmMessage level) or a resource being managed in the request (at the ResourceMessage level). Most often there will be a single instance for an associated request or resource, but this structure allows for more than one if needed, for example, if multiple errors exist for a single resource. Each object contains processing information for either the request (at the ConfirmMessage level) or a resource being managed in the request (at the ResourceMessage level).</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/processMessageID</td>
+     <td class="type">object</td>
+     <td class="name">An identifier for the instance of the process message.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/processMessageID/idValue</td>
+     <td class="type">string</td>
+     <td class="name">An ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/processMessageID/schemeName</td>
+     <td class="type">string</td>
+     <td class="name">The type of ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/processMessageID/schemeAgencyName</td>
+     <td class="type">string</td>
+     <td class="name">The agency that issues the ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/messageTypeCode</td>
+     <td class="type">object</td>
+     <td class="name">Process Message instances may be of type: success, warning, error, or info.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/messageTypeCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/messageTypeCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/messageTypeCode/codeValue</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;success&quot;,&quot;warning&quot;,&quot;error&quot;,&quot;info&quot;]</td>
+     <td class="name">The code for the related entity.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/sourceLocationExpression</td>
+     <td class="type">string</td>
+     <td class="name">Expression that provides the location (or source) of content in a message instance that is associated with a process message. Examples of expression languages include: XPath, XQuery, JSON Pointer.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/expressionLanguageCode</td>
+     <td class="type">object</td>
+     <td class="name">Identifies the language used for expressions communicated in this message.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/expressionLanguageCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/expressionLanguageCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/expressionLanguageCode/codeValue</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;jPath&quot;]</td>
+     <td class="name">The code for the related entity.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links</td>
+     <td class="type">array</td>
+     <td class="name">A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links.A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/links/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage</td>
+     <td class="type">object</td>
+     <td class="name">Message returned to the user</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code associated with the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/title</td>
+     <td class="type">string</td>
+     <td class="name">Title of the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/messageTxt</td>
+     <td class="type">string</td>
+     <td class="name">The value/content of the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links</td>
+     <td class="type">array</td>
+     <td class="name">A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links.A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/userMessage/links/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage</td>
+     <td class="type">object</td>
+     <td class="name">Message returned to the user</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code associated with the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/title</td>
+     <td class="type">string</td>
+     <td class="name">Title of the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/messageTxt</td>
+     <td class="type">string</td>
+     <td class="name">The value/content of the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links</td>
+     <td class="type">array</td>
+     <td class="name">A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links.A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/processMessages/developerMessage/links/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages</td>
+     <td class="type">array</td>
+     <td class="name">resource Message contains the resource-specific processing results for resources being managed in the request. A resource may have its processing reported as: succeeded or failed. It must be used to represent resource-specific messages. In the case of a request managing multiple resources and resource-specific messages are to be returned, then this array will contain one object for each such resource of the request.Each object contains detailed information for a resource referenced in the original request.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceMessageID</td>
+     <td class="type">object</td>
+     <td class="name">An identifier for the instance of the resource message.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceMessageID/idValue</td>
+     <td class="type">string</td>
+     <td class="name">An ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceMessageID/schemeName</td>
+     <td class="type">string</td>
+     <td class="name">The type of ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceMessageID/schemeAgencyName</td>
+     <td class="type">string</td>
+     <td class="name">The agency that issues the ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceStatusCode</td>
+     <td class="type">object</td>
+     <td class="name">The processing results status code of the resource of the request.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceStatusCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceStatusCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceStatusCode/codeValue</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;succeeded&quot;,&quot;failed&quot;,&quot;warning&quot;]</td>
+     <td class="name">The code for the related entity.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink</td>
+     <td class="type">object</td>
+     <td class="name">The link of the request that generated this response.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/resourceLink/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages</td>
+     <td class="type">array</td>
+     <td class="name">processMessage is optional and contains processing information for either the request (at the ConfirmMessage level) or a resource being managed in the request (at the ResourceMessage level). Most often there will be a single instance for an associated request or resource, but this structure allows for more than one if needed, for example, if multiple errors exist for a single resource. Each object contains processing information for either the request (at the ConfirmMessage level) or a resource being managed in the request (at the ResourceMessage level).</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/processMessageID</td>
+     <td class="type">object</td>
+     <td class="name">An identifier for the instance of the process message.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/processMessageID/idValue</td>
+     <td class="type">string</td>
+     <td class="name">An ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/processMessageID/schemeName</td>
+     <td class="type">string</td>
+     <td class="name">The type of ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/processMessageID/schemeAgencyName</td>
+     <td class="type">string</td>
+     <td class="name">The agency that issues the ID</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/messageTypeCode</td>
+     <td class="type">object</td>
+     <td class="name">Process Message instances may be of type: success, warning, error, or info.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/messageTypeCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/messageTypeCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/messageTypeCode/codeValue</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;success&quot;,&quot;warning&quot;,&quot;error&quot;,&quot;info&quot;]</td>
+     <td class="name">The code for the related entity.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/sourceLocationExpression</td>
+     <td class="type">string</td>
+     <td class="name">Expression that provides the location (or source) of content in a message instance that is associated with a process message. Examples of expression languages include: XPath, XQuery, JSON Pointer.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/expressionLanguageCode</td>
+     <td class="type">object</td>
+     <td class="name">Identifies the language used for expressions communicated in this message.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/expressionLanguageCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/expressionLanguageCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/expressionLanguageCode/codeValue</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;jPath&quot;]</td>
+     <td class="name">The code for the related entity.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links</td>
+     <td class="type">array</td>
+     <td class="name">A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links.A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/links/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage</td>
+     <td class="type">object</td>
+     <td class="name">Message returned to the user</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code associated with the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/title</td>
+     <td class="type">string</td>
+     <td class="name">Title of the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/messageTxt</td>
+     <td class="type">string</td>
+     <td class="name">The value/content of the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links</td>
+     <td class="type">array</td>
+     <td class="name">A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links.A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/userMessage/links/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage</td>
+     <td class="type">object</td>
+     <td class="name">Message returned to the user</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code associated with the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/title</td>
+     <td class="type">string</td>
+     <td class="name">Title of the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/messageTxt</td>
+     <td class="type">string</td>
+     <td class="name">The value/content of the message description.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links</td>
+     <td class="type">array</td>
+     <td class="name">A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links.A link description object is used to describe link relations. In the context of a schema, it defines the link relations of the instances of the schema, and can be parameterized by the instance values. The link description format can be used on its own in regular (non-schema documents), and use of this format can be declared by referencing the normative link description schema as the the schema for the data structure that uses the links</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links/href</td>
+     <td class="type">string[uri]</td>
+     <td class="name">The URI of the related entity</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links/rel</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;alternate&quot;,&quot;create&quot;,&quot;canonical&quot;,&quot;describedby&quot;,&quot;edit-form&quot;,&quot;enclosure&quot;,&quot;full&quot;,&quot;related&quot;,&quot;root&quot;,&quot;self&quot;,&quot;up&quot;,&quot;search&quot;,&quot;first&quot;,&quot;last&quot;,&quot;next&quot;,&quot;previous&quot;,&quot;/adp/invoke&quot;,&quot;/adp/image&quot;,&quot;/adp/confirm-message&quot;,&quot;/adp/status-monitor&quot;,&quot;/adp/codelist&quot;,&quot;/adp/template&quot;,&quot;/adp/externalLink&quot;,&quot;/adp/validation&quot;]</td>
+     <td class="name">Indicates the nature of the relationship of the related resource to the resource that generated this representation</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links/title</td>
+     <td class="type">string</td>
+     <td class="name">This property defines a title for the link. The value must be a string. User agents MAY use this title when presenting the link to the user.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links/targetSchema</td>
+     <td class="type">string</td>
+     <td class="name">This property is a schema that defines the expected structure of the JSON representation of the target of the link, if the target of the link is returned using JSON representation.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links/mediaType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/gzip&quot;,&quot;application/json&quot;,&quot;application/msword&quot;,&quot;application/pdf&quot;,&quot;application/postscript&quot;,&quot;application/vnd.ms-excel&quot;,&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;,&quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;,&quot;application/x-www-form-urlencoded&quot;,&quot;image/gif&quot;,&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/tiff&quot;,&quot;multipart/mixed&quot;,&quot;text/html&quot;,&quot;text/plain&quot;,&quot;application/vnd.visio&quot;,&quot;image/bmp&quot;,&quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;,&quot;application/vnd.ms-powerpoint&quot;,&quot;video/mp4&quot;,&quot;audio/mpeg&quot;,&quot;video/x-msvideo&quot;,&quot;video/x-ms-wmv&quot;,&quot;application/rtf&quot;,&quot;application/vnd.ms-outlook&quot;,&quot;text/csv&quot;,&quot;video/quicktime&quot;,&quot;application/zip&quot;,&quot;application/illustrator&quot;,&quot;text/xml&quot;]</td>
+     <td class="name">The media type that the linked resource will return (Response)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links/method</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;GET&quot;,&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;]</td>
+     <td class="name">The HTTP method code (HTTP Verb) traverse the link (GET, POST, PUT or DELETE)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links/encType</td>
+     <td class="type">string[enum]<br />allowed values:[&quot;application/json&quot;,&quot;application/x-www-form-urlencoded&quot;]</td>
+     <td class="name">If present, this property indicates a query media type format that the server supports for querying or posting to the collection of instances at the target resource. The query can be suffixed to the target URI to query the collection with property-based constraints on the resources that SHOULD be returned from the server or used to post data to the resource (depending on the method). (Request)</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links/schema</td>
+     <td class="type">string</td>
+     <td class="name">This property contains a schema which defines the acceptable structure of the submitted request. For a GET request, this schema would define the properties for the query string and for a POST request, this would define the body.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links/payLoadArguments</td>
+     <td class="type">array</td>
+     <td class="name"></td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links/payLoadArguments/argumentPath</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/developerMessage/links/payLoadArguments/argumentValue</td>
+     <td class="type">string</td>
+     <td class="name">Code value (typically a key field) of the code list item</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/resourceStatusCode</td>
+     <td class="type">object</td>
+     <td class="name">DEPRECATED - Use messageTypeCode instead. The processing results status code of the resource of the request.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/resourceStatusCode/codeValue</td>
+     <td class="type">string</td>
+     <td class="name">The code for the related entity.</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/resourceStatusCode/shortName</td>
+     <td class="type">string</td>
+     <td class="name">Short description of the related code not to exceed 25 characters</td>
+    </tr>
+    <tr>
+     <td class="name">/confirmMessage/resourceMessages/processMessages/resourceStatusCode/longName</td>
+     <td class="type">string</td>
+     <td class="name">Long description of the related code</td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>
