@@ -2063,6 +2063,7 @@
             "processMessages" : {
               "description" : "processMessage is optional and contains processing information for either the request (at the ConfirmMessage level) or a resource being managed in the request (at the ResourceMessage level).  Most often there will be a single instance for an associated request or resource, but this structure allows for more than one if needed, for example, if multiple errors exist for a single resource. ",
               "type" : "array",
+              "minItems": 1,
               "items" : {
                 "description" : "Each object contains processing information for either the request (at the ConfirmMessage level) or a resource being managed in the request (at the ResourceMessage level).",
                 "type" : "object",
@@ -3290,6 +3291,7 @@
             "resourceMessages" : {
               "description" : "resource Message contains the resource-specific processing results for resources being managed in the request.  A resource may have its processing reported as:  succeeded or failed.  It must be used to represent resource-specific messages.  In the case of a request managing multiple resources and resource-specific messages are to be returned, then this array will contain one object for each such resource of the request.",
               "type" : "array",
+              "minItems": 1,
               "items" : {
                 "description" : "Each object contains detailed information for a resource referenced in the original request.",
                 "type" : "object",
