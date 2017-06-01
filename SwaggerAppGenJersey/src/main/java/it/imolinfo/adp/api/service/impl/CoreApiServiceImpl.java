@@ -50,6 +50,21 @@ public class CoreApiServiceImpl extends CoreApiService {
         String originatingEventID = "test";
         String relatedEventID = "test";
         WorkerPersonalAddressChangeEvent response=null;
+        //TODO disaccopiamento
+        if(body.getEvents().get(0).getLinks().size()>0){
+            //ho qualcosa da fare
+            for(EventsLinks eventsLinks : body.getEvents().get(0).getLinks()){
+                LOG.debug(String.format("process EventLinks: %s", eventsLinks));
+                if(eventsLinks.getMethod().equals(EventsLinks.MethodEnum.GET)){
+                    //TODO logica
+                }else{
+                    LOG.error(String.format("metodo non supportato: %s", eventsLinks.getMethod()));
+                    //TODO gestione sensata errori
+                    return Response.serverError().status(Response.Status.BAD_REQUEST).entity(String.format("metodo non supportato: %s", eventsLinks.getMethod())).build();
+                }
+            }
+        }
+
         try {
             WorkerApi api = new WorkerApi();
             //TODO gestire host in maniera selettiva in base all'ambiente
