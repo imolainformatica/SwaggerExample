@@ -25,17 +25,7 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class CustomJsonProvider implements ContextResolver<ObjectMapper> {
     static final Logger LOG = LoggerFactory.getLogger(CustomJsonProvider.class);
-    private static ObjectMapper mapper = Json.mapper();
-
-
-    static {
-//        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-//        mapper.setSerializationInclusion(JsonInclude.Include.ALWAYS);
-//        mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-//        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        mapper.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS);
-    }
-
+    private static ObjectMapper mapper = CustomObjectMapper.get();
     @Override
     public ObjectMapper getContext(Class<?> aClass) {
         return mapper;

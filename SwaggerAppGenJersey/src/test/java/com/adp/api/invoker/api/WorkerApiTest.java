@@ -28,12 +28,17 @@ package com.adp.api.invoker.api;
 import com.adp.api.invoker.client.ApiException;
 import com.adp.api.invoker.model.WorkerPersonalAddressChangeEvent;
 import com.adp.api.invoker.model.ConfirmMessage;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import io.swagger.util.Json;
+import it.imolinfo.app.CustomObjectMapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +46,8 @@ import java.util.Map;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * API tests for WorkerApi
@@ -61,7 +68,7 @@ public class WorkerApiTest {
      *          if the Api call fails
      */
     @Test
-    public void workerPersonalAddressChangeTest() {
+    public void workerPersonalAddressChangeTestSuccesfull() {
         String eventId = "123";
         String associateoid = "test";
         String orgoid = "test";
@@ -82,7 +89,7 @@ public class WorkerApiTest {
         String aDPActingSessionID = "test";
         String originatingEventID = "test";
         String relatedEventID = "test";
-        stubFor(get(urlEqualTo("/events/hr/v1/worker.personal-address.change/123?originatingEventID=test&relatedEventID=test"))
+        stubFor(get(urlEqualTo(String.format("/events/hr/v1/worker.personal-address.change/%s?originatingEventID=%s&relatedEventID=%s", eventId, originatingEventID, relatedEventID)))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")
@@ -98,7 +105,64 @@ public class WorkerApiTest {
             LOG.debug("response size: " + response.getEvents().size());
         }
         // TODO: test validations
-        verify(1, getRequestedFor(urlEqualTo("/events/hr/v1/worker.personal-address.change/123?originatingEventID=test&relatedEventID=test")));
+        verify(1, getRequestedFor(urlEqualTo(String.format("/events/hr/v1/worker.personal-address.change/%s?originatingEventID=%s&relatedEventID=%s", eventId, originatingEventID, relatedEventID))));
     }
-    
+    /**
+     * Change on personal address of worker
+     *
+     * Returns an event instance
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void workerPersonalAddressChangeTestFail() {
+        String eventId = "124";
+        String associateoid = "test";
+        String orgoid = "test";
+        String SOR = "test";
+        String realm = "test";
+        String roleCode = "test";
+        String smServersessionid = "test";
+        String sORContext = "test";
+        String sORUri = "test";
+        String acceptLanguage = "test";
+        String CONSUMEROOID = "test";
+        String CONSUMERAOID = "test";
+        String consumerAppOID = "test";
+        String aDPActAsOrgOID = "test";
+        String aDPActAsAssociateOID = "test";
+        String aDPOnBehalfOfOrgOID = "test";
+        String aDPOnBehalfOfAssociateOID = "test";
+        String aDPActingSessionID = "test";
+        String originatingEventID = "test";
+        String relatedEventID = "test";
+        stubFor(get(urlEqualTo(String.format("/events/hr/v1/worker.personal-address.change/%s?originatingEventID=%s&relatedEventID=%s", eventId, originatingEventID, relatedEventID)))
+                .willReturn(aResponse()
+                        .withStatus(400)
+                        .withHeader("Content-Type", "application/json")
+                        .withBodyFile("WorkerApiTest/confirmMessage_v1_0_rev002_400_GET.json")
+                ));
+        WorkerPersonalAddressChangeEvent response=null;
+        try {
+            response = api.workerPersonalAddressChange(eventId, associateoid, orgoid, SOR, realm, roleCode, smServersessionid, sORContext, sORUri, acceptLanguage, CONSUMEROOID, CONSUMERAOID, consumerAppOID, aDPActAsOrgOID, aDPActAsAssociateOID, aDPOnBehalfOfOrgOID, aDPOnBehalfOfAssociateOID, aDPActingSessionID, originatingEventID, relatedEventID);
+        }catch (ApiException e){
+            ObjectMapper mapper = CustomObjectMapper.get();
+            //JSON from String to Object
+            try {
+                ConfirmMessage obj = mapper.readValue(e.getResponseBody(), ConfirmMessage.class);
+                assertEquals("12312321",obj.getConfirmMessage().getConfirmMessageID().getIdValue());
+            } catch (IOException e1) {
+                LOG.error("impossibile eseguire parsing json risposta:"+e1.getLocalizedMessage(),e1);
+                LOG.error(e.getResponseBody());
+                fail();
+            }
+        }
+        assertEquals(null,response);
+        if(response!=null){
+            LOG.debug("response size: " + response.getEvents().size());
+        }
+        // TODO: test validations
+        verify(1, getRequestedFor(urlEqualTo(String.format("/events/hr/v1/worker.personal-address.change/%s?originatingEventID=%s&relatedEventID=%s", eventId, originatingEventID, relatedEventID))));
+    }
 }

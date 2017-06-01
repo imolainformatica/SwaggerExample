@@ -2839,12 +2839,12 @@
             },
             "createDateTime" : {
               "description" : "The date & time that the message instance was generated.; follows the ISO-8601:2000 format: 2008-05-11T15:30:00-06:00.",
-              "type" : "string",
+              "type" : "date-time",
               "format" : "date-time"
             },
             "requestReceiptDateTime" : {
               "description" : "The date & time that the request submitted by the client was received. Note, this timestamp may not be the same as the time the client actually submitted the request if there is a queuing mechanism between the client and server processing the request; it follows the ISO-8601:2000 format: 2008-05-11T15:30:00-06:00.",
-              "type" : "string",
+              "type" : "date-time",
               "format" : "date-time"
             },
             "protocolStatusCode" : {
