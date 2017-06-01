@@ -143,9 +143,9 @@
             <configuration>
               <inputSpec>src/main/resources/workerUpdateReceiver.json</inputSpec>
               <language>jaxrs</language>
-              <!--<configOptions>-->
-                <!--<sourceFolder>src/gen/java/main</sourceFolder>-->
-              <!--</configOptions>-->
+              <configOptions>
+                <dateLibrary>legacy</dateLibrary>
+              </configOptions>
               <apiPackage>it.imolinfo.adp.api.service</apiPackage>
               <modelPackage>it.imolinfo.adp.api.model</modelPackage>
             </configuration>
@@ -162,6 +162,9 @@
               <!--<configOptions>-->
               <!--<sourceFolder>src/gen/java/main</sourceFolder>-->
               <!--</configOptions>-->
+              <configOptions>
+                <dateLibrary>legacy</dateLibrary>
+              </configOptions>
               <apiPackage>com.adp.api.invoker.api</apiPackage>
               <modelPackage>com.adp.api.invoker.model</modelPackage>
               <invokerPackage>com.adp.api.invoker.client</invokerPackage>

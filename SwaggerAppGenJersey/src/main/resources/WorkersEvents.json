@@ -403,22 +403,22 @@
               },
               "creationDateTime" : {
                 "description" : "This is the date time the event is created. If a system of record creates the event instance, as in the case of an annual enrollment for example, then is sets the creation date time. If a user declares an event, then this is set to the date time when the first call is made to the system of record",
-                "type" : "date-time",
+                "type" : "string",
                 "format" : "date-time"
               },
               "effectiveDateTime" : {
                 "description" : "This is the effective date, or effective date time fo the event from a business perspective. In some systems, this may be referred to as the Event Date. For example, for a birth event, this is the date of birth. If there is no effective date from a business perspective, this is set equal to the record date time",
-                "type" : "date-time",
+                "type" : "string",
                 "format" : "date-time"
               },
               "expirationDateTime" : {
                 "description" : "This value is set by the system of record and used to term the life cycle of an event instance. ",
-                "type" : "date-time",
+                "type" : "string",
                 "format" : "date-time"
               },
               "dueDateTime" : {
                 "description" : "This value is set by the system of record and allows for the presentation of a date by which the system of record would like the user to complete the event",
-                "type" : "date-time",
+                "type" : "string",
                 "format" : "date-time"
               },
               "notificationIndicator" : {
@@ -2839,12 +2839,12 @@
             },
             "createDateTime" : {
               "description" : "The date & time that the message instance was generated.; follows the ISO-8601:2000 format: 2008-05-11T15:30:00-06:00.",
-              "type" : "date-time",
+              "type" : "string",
               "format" : "date-time"
             },
             "requestReceiptDateTime" : {
               "description" : "The date & time that the request submitted by the client was received. Note, this timestamp may not be the same as the time the client actually submitted the request if there is a queuing mechanism between the client and server processing the request; it follows the ISO-8601:2000 format: 2008-05-11T15:30:00-06:00.",
-              "type" : "date-time",
+              "type" : "string",
               "format" : "date-time"
             },
             "protocolStatusCode" : {

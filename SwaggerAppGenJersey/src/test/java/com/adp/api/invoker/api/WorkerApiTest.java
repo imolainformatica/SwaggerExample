@@ -39,10 +39,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
@@ -152,6 +149,9 @@ public class WorkerApiTest {
             try {
                 ConfirmMessage obj = mapper.readValue(e.getResponseBody(), ConfirmMessage.class);
                 assertEquals("12312321",obj.getConfirmMessage().getConfirmMessageID().getIdValue());
+                assertEquals(new Date(Long.parseLong("1372087801000")),obj.getConfirmMessage().getCreateDateTime());
+                assertEquals(new Date(Long.parseLong("1372109400000")),obj.getConfirmMessage().getRequestReceiptDateTime());
+
             } catch (IOException e1) {
                 LOG.error("impossibile eseguire parsing json risposta:"+e1.getLocalizedMessage(),e1);
                 LOG.error(e.getResponseBody());
