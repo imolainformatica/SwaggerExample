@@ -1,5 +1,8 @@
 package it.imolinfo.adp.api.service.impl;
 
+import com.adp.api.invoker.api.WorkerApi;
+import com.adp.api.invoker.client.ApiException;
+import com.adp.api.invoker.model.WorkerPersonalAddressChangeEvent;
 import it.imolinfo.adp.api.*;
 import it.imolinfo.adp.api.model.*;
 
@@ -26,6 +29,37 @@ public class CoreApiServiceImpl extends CoreApiService {
     public Response eventNotificationMessages(Events body, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         LOG.info(new StringBuilder().append("eventID").append(body.getEvents().get(0).getEventID()).toString());
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic^2!")).build();
+        String eventId = "123";
+        String associateoid = "test";
+        String orgoid = "test";
+        String SOR = "test";
+        String realm = "test";
+        String roleCode = "test";
+        String smServersessionid = "test";
+        String sORContext = "test";
+        String sORUri = "test";
+        String acceptLanguage = "test";
+        String CONSUMEROOID = "test";
+        String CONSUMERAOID = "test";
+        String consumerAppOID = "test";
+        String aDPActAsOrgOID = "test";
+        String aDPActAsAssociateOID = "test";
+        String aDPOnBehalfOfOrgOID = "test";
+        String aDPOnBehalfOfAssociateOID = "test";
+        String aDPActingSessionID = "test";
+        String originatingEventID = "test";
+        String relatedEventID = "test";
+        WorkerPersonalAddressChangeEvent response=null;
+        try {
+            WorkerApi api = new WorkerApi();
+//            api.getApiClient().setBasePath("");
+            response = api.workerPersonalAddressChange(eventId, associateoid, orgoid, SOR, realm, roleCode, smServersessionid, sORContext, sORUri, acceptLanguage, CONSUMEROOID, CONSUMERAOID, consumerAppOID, aDPActAsOrgOID, aDPActAsAssociateOID, aDPOnBehalfOfOrgOID, aDPOnBehalfOfAssociateOID, aDPActingSessionID, originatingEventID, relatedEventID);
+        }catch (ApiException e){
+            LOG.error(e.getLocalizedMessage(),e);
+        }
+        if(response!=null){
+            LOG.debug("response size: " + response.getEvents().size());
+        }
+        return Response.ok().entity(response).build();
     }
 }
