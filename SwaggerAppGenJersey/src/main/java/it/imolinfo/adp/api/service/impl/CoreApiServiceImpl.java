@@ -52,6 +52,7 @@ public class CoreApiServiceImpl extends CoreApiService {
         WorkerPersonalAddressChangeEvent response=null;
         try {
             WorkerApi api = new WorkerApi();
+            //TODO gestire host in maniera selettiva in base all'ambiente
 //            api.getApiClient().setBasePath("");
             response = api.workerPersonalAddressChange(eventId, associateoid, orgoid, SOR, realm, roleCode, smServersessionid, sORContext, sORUri, acceptLanguage, CONSUMEROOID, CONSUMERAOID, consumerAppOID, aDPActAsOrgOID, aDPActAsAssociateOID, aDPOnBehalfOfOrgOID, aDPOnBehalfOfAssociateOID, aDPActingSessionID, originatingEventID, relatedEventID);
         }catch (ApiException e){
