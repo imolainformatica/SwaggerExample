@@ -102,7 +102,6 @@ public class WorkerApiTest {
         if(response!=null){
             LOG.debug("response size: " + response.getEvents().size());
         }
-        // TODO: test validations
         verify(1, getRequestedFor(urlMatching(urlMock)));
     }
     /**
@@ -163,7 +162,6 @@ public class WorkerApiTest {
         if(response!=null){
             LOG.debug("response size: " + response.getEvents().size());
         }
-        // TODO: test validations
         verify(1, getRequestedFor(urlMatching(urlMock)));
     }
 }

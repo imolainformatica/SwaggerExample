@@ -43,12 +43,12 @@ public class CoreApiServiceImpl extends CoreApiService {
             for(EventsLinks eventsLinks : body.getEvents().get(0).getLinks()){
                 LOG.debug(String.format("process EventLinks: %s", eventsLinks));
                 if(eventsLinks.getMethod()!=null && eventsLinks.getMethod().equals(EventsLinks.MethodEnum.GET)){
-                    //TODO logica
+                    //TODO fattorizzazione
                     String href = eventsLinks.getHref();
                     String title = eventsLinks.getTitle();
                     try {
                         WorkerApi api = new WorkerApi();
-                        //TODO gestire host in maniera selettiva in base alla richiesta
+                        //gestione host in maniera selettiva in base alla richiesta
                         //            api.getApiClient().setBasePath("");
                         //http://localhost:8989/events/hr/v1
                         //https://test-api.adp.com/events/hr/v1/worker.personal-address.change
@@ -86,7 +86,7 @@ public class CoreApiServiceImpl extends CoreApiService {
                                 response = api.workerPersonalAddressChange(eventId, associateoid, orgoid, SOR, realm, roleCode, smServersessionid, sORContext, sORUri, acceptLanguage, CONSUMEROOID, CONSUMERAOID, consumerAppOID, aDPActAsOrgOID, aDPActAsAssociateOID, aDPOnBehalfOfOrgOID, aDPOnBehalfOfAssociateOID, aDPActingSessionID, originatingEventID, relatedEventID);
                             } catch (UnsupportedEncodingException e) {
                                 LOG.error("impossibile estrarre campi da url ",e);
-                                //TODO gestire
+                                //TODO gestire errori
                             }
                         } else {
                             LOG.error(String.format("l'url %s non presenta il pattern desiderato: %s ", href));

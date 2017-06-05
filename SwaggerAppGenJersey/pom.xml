@@ -134,6 +134,7 @@
 
   </dependencies>
   <build>
+    <!--TODO compilazione con libreria 1.4 fra dipendenze -->
     <finalName>SwaggerApp</finalName>
     <plugins>
       <plugin>
