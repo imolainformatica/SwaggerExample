@@ -86,7 +86,8 @@ public class WorkerApiTest {
         String aDPActingSessionID = "test";
         String originatingEventID = "test";
         String relatedEventID = "test";
-        stubFor(get(urlEqualTo(String.format("/events/hr/v1/worker.personal-address.change/%s?originatingEventID=%s&relatedEventID=%s", eventId, originatingEventID, relatedEventID)))
+        String urlMock= String.format(".*/events/hr/v1/worker.personal-address.change/%s.*", eventId);
+        stubFor(get(urlMatching(urlMock))
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")
@@ -102,7 +103,7 @@ public class WorkerApiTest {
             LOG.debug("response size: " + response.getEvents().size());
         }
         // TODO: test validations
-        verify(1, getRequestedFor(urlEqualTo(String.format("/events/hr/v1/worker.personal-address.change/%s?originatingEventID=%s&relatedEventID=%s", eventId, originatingEventID, relatedEventID))));
+        verify(1, getRequestedFor(urlMatching(urlMock)));
     }
     /**
      * Change on personal address of worker
@@ -133,8 +134,8 @@ public class WorkerApiTest {
         String aDPOnBehalfOfAssociateOID = "test";
         String aDPActingSessionID = "test";
         String originatingEventID = "test";
-        String relatedEventID = "test";
-        stubFor(get(urlEqualTo(String.format("/events/hr/v1/worker.personal-address.change/%s?originatingEventID=%s&relatedEventID=%s", eventId, originatingEventID, relatedEventID)))
+        String relatedEventID = "test"; String urlMock= String.format(".*/events/hr/v1/worker.personal-address.change/%s.*", eventId);
+        stubFor(get(urlMatching(urlMock))
                 .willReturn(aResponse()
                         .withStatus(400)
                         .withHeader("Content-Type", "application/json")
@@ -163,6 +164,6 @@ public class WorkerApiTest {
             LOG.debug("response size: " + response.getEvents().size());
         }
         // TODO: test validations
-        verify(1, getRequestedFor(urlEqualTo(String.format("/events/hr/v1/worker.personal-address.change/%s?originatingEventID=%s&relatedEventID=%s", eventId, originatingEventID, relatedEventID))));
+        verify(1, getRequestedFor(urlMatching(urlMock)));
     }
 }
