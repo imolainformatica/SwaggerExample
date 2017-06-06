@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.adp.esi.mobile</groupId>
+		<artifactId>core</artifactId>
+		<version>1.8.7</version>
+	</parent>
+
+	<artifactId>core-adaptors</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Mobile Backend Core Adaptors</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		<!-- *********************************************************** -->
+		<!-- Application dependencies to be assembled in the final package-->
+		<!-- *********************************************************** -->
+
+		<!-- *********************************************************** -->
+		<!-- Application dependencies NOT to be assembled in the final package, -->
+		<!-- but should be in the classpath to be compiled -->
+		<!-- *********************************************************** -->
+		<dependency>
+			<groupId>com.adp.esi.mobile</groupId>
+			<artifactId>core-api</artifactId>
+		</dependency>
+
+	</dependencies>
+</project>

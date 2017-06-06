@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.adp.esi</groupId>
+	<artifactId>maven-adp-common</artifactId>
+	<version>2.0.3</version>
+
+	<packaging>pom</packaging>
+
+	<description>Common configuration for Maven 2 project</description>
+
+	<!-- ***************************************************************** -->
+	<!-- ADP Maven EU repository -->
+	<!-- ***************************************************************** -->
+	<distributionManagement>
+
+		<!-- RELEASE Repo -->
+		<repository>
+			<id>http-eu-repository</id>
+			<name>Repo Release</name>
+			<url>${release.repo.url}</url>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+
+		<!-- SNAPSHOT Repo -->
+		<snapshotRepository>
+			<id>http-eu-repository</id>
+			<name>Repo Snapshot</name>
+			<url>${snapshot.repo.url}</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<!-- ***************************************************************** -->
+	<!-- Common properties -->
+	<!-- ***************************************************************** -->
+	<properties>
+		<!-- Build set to UTF-8 encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<!-- maven release Repository url -->
+		<release.repo.domain>maven-deveu.ad.esi.adp.com:8081</release.repo.domain>
+		<release.repo.uri>/nexus/content/repositories/releases</release.repo.uri>
+		<release.repo.url>http://${release.repo.domain}${release.repo.uri}</release.repo.url>
+		
+		<!-- maven snapshot Repository url -->
+		<snapshot.repo.domain>maven-deveu.ad.esi.adp.com:8081</snapshot.repo.domain>
+		<snapshot.repo.uri>/nexus/content/repositories/snapshots</snapshot.repo.uri>
+		<snapshot.repo.url>http://${snapshot.repo.domain}${snapshot.repo.uri}</snapshot.repo.url>
+
+	</properties>
+
+</project>
