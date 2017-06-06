@@ -13,6 +13,8 @@ import java.util.Properties;
 public class ConfigurationManager {
     static final Logger LOG = LoggerFactory.getLogger(ConfigurationManager.class);
     static final Properties properties = new Properties();
+    private static final String BASE_PATTERN = "events/hr/v1";
+
     static{
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         InputStream input = classLoader.getResourceAsStream("api.properties");
@@ -27,5 +29,8 @@ public class ConfigurationManager {
     }
     public static String getHCMHost(){
         return properties.getProperty("worker.hcm.host","http://localhost:8080");
+    }
+    public static String getBasePatternEvent() {
+        return BASE_PATTERN;
     }
 }

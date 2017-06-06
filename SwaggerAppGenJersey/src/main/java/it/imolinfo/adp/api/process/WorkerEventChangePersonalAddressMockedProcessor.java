@@ -12,37 +12,20 @@ import org.slf4j.LoggerFactory;
  */
 public class WorkerEventChangePersonalAddressMockedProcessor implements IWorkerEventProcessor {
     static final Logger LOG = LoggerFactory.getLogger(WorkerEventChangePersonalAddressMockedProcessor.class);
-    private static final String PATTERN = "events/hr/v1";
 
+    private static WorkerApi api;
     private String href;
 
-    public WorkerEventChangePersonalAddressMockedProcessor(String href) {
+    public WorkerEventChangePersonalAddressMockedProcessor(String href,WorkerApi api) {
         this.href = href;
+        this.api = api;
     }
 
-    public WorkerPersonalAddressChangeEvent invoke() {
+    public WorkerPersonalAddressChangeEvent invoke() throws ApiException {
         WorkerPersonalAddressChangeEvent response = null;
-        try {
-            WorkerApi api = new WorkerApi();
-            //gestione host in maniera selettiva in base alla richiesta
-            //            api.getApiClient().setBasePath("");
-            //http://localhost:8989/events/hr/v1
-            //https://test-api.adp.com/events/hr/v1/worker.personal-address.change
-            if(href!=null && href.contains(PATTERN)){
-                LOG.info("l'url matching");
-                LOG.info(String.format("set basePath from:%s to %s%s", api.getApiClient().getBasePath(), ConfigurationManager.getHCMHost(), PATTERN));
-                api.getApiClient().setBasePath(ConfigurationManager.getHCMHost()+"/"+PATTERN);
-                response = api.workerPersonalAddressChange(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-//                            } catch (UnsupportedEncodingException e) {
-//                                LOG.error("impossibile estrarre campi da url ",e);
-                //TODO gestire errori
-//                            }
-            } else {
-                LOG.error(String.format("l'url %s non presenta il pattern desiderato: %s ", href));
-            }
-        }catch (ApiException e){
-            LOG.error(e.getLocalizedMessage(),e);
-        }
+
+            response = api.workerPersonalAddressChange(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+
         if(response!=null){
             LOG.debug("response size: " + response.getEvents().size());
         }
