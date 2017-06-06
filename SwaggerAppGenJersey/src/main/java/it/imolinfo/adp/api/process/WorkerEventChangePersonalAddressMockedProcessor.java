@@ -31,7 +31,7 @@ public class WorkerEventChangePersonalAddressMockedProcessor implements IWorkerE
             if(href!=null && href.contains(PATTERN)){
                 LOG.info("l'url matching");
                 LOG.info(String.format("set basePath from:%s to %s%s", api.getApiClient().getBasePath(), ConfigurationManager.getHCMHost(), PATTERN));
-                api.getApiClient().setBasePath(ConfigurationManager.getHCMHost()+PATTERN);
+                api.getApiClient().setBasePath(ConfigurationManager.getHCMHost()+"/"+PATTERN);
                 response = api.workerPersonalAddressChange(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 //                            } catch (UnsupportedEncodingException e) {
 //                                LOG.error("impossibile estrarre campi da url ",e);
