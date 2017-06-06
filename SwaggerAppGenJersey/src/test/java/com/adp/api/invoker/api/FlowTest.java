@@ -45,7 +45,11 @@ public class FlowTest extends JerseyTest {
         String originatingEventID = "test";
         String relatedEventID = "test";
         String associateoid = "test";
-        String href= String.format("/events/hr/v1/worker.personal-address.change/%s?originatingEventID=%s&relatedEventID=%s&associateoid=%s", eventId, originatingEventID, relatedEventID, associateoid);
+        String SOR = "test";
+        String realm = "realm";
+        String roleCode = "roleCode";
+        String smServersessionid = "smServersessionid";
+        String href= String.format("/events/hr/v1/worker.personal-address.change/%s?originatingEventID=%s&relatedEventID=%s&associateoid=%s&SOR=%s&realm=%s&roleCode=%s&smServersessionid=%s", eventId, originatingEventID, relatedEventID, associateoid, SOR, realm, roleCode, smServersessionid);
         String urlMock= String.format(".*/events/hr/v1/worker.personal-address.change/%s.*", eventId);
         stubFor(get(urlMatching(urlMock))
                 .willReturn(aResponse()
@@ -57,7 +61,7 @@ public class FlowTest extends JerseyTest {
         EventsEvents eveve = new EventsEvents();
         EventsLinks link = new EventsLinks();
         link.setTitle("worker.personal-address.change");
-        link.setHref(String.format("http://localhost:%d/%s", PORT, href));
+        link.setHref(href);
         link.setMethod(EventsLinks.MethodEnum.GET);
         ArrayList<EventsLinks> links = new ArrayList<EventsLinks>();
         links.add(link);

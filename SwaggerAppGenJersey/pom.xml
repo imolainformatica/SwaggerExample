@@ -13,6 +13,8 @@
     <!--2.8.8 per generare swagger json-->
     <swagger.version>1.5.13</swagger.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <swagger-codegen-maven-plugin.inputSpecClient>src/main/resources/WorkersEvents.json</swagger-codegen-maven-plugin.inputSpecClient>
+    <swagger-codegen-maven-plugin.inputSpecServer>src/main/resources/workerUpdateReceiver.json</swagger-codegen-maven-plugin.inputSpecServer>
   </properties>
   <dependencies>
     <dependency>
@@ -149,7 +151,7 @@
               <goal>generate</goal>
             </goals>
             <configuration>
-              <inputSpec>src/main/resources/workerUpdateReceiver.json</inputSpec>
+              <inputSpec>${swagger-codegen-maven-plugin.inputSpecServer}</inputSpec>
               <language>jaxrs</language>
               <configOptions>
                 <dateLibrary>legacy</dateLibrary>
@@ -165,7 +167,7 @@
               <goal>generate</goal>
             </goals>
             <configuration>
-              <inputSpec>src/main/resources/WorkersEvents.json</inputSpec>
+              <inputSpec>${swagger-codegen-maven-plugin.inputSpecClient}</inputSpec>
               <language>java</language>
               <!--<configOptions>-->
               <!--<sourceFolder>src/gen/java/main</sourceFolder>-->
