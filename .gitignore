@@ -11,3 +11,5 @@ SwaggerAppGenJersey/target/
 AppGenSwagger/target/
 
 AppGenSwagger/\.swagger-codegen-ignore
+
+WorkerApi/target/

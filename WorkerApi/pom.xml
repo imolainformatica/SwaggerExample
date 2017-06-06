@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>it.imolinfo</groupId>
-    <artifactId>SwaggerApp</artifactId>
+    <artifactId>WorkerApi</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>SwaggerApp Maven Webapp</name>
+    <name>WorkerApi Webapp</name>
     <url>http://maven.apache.org</url>
     <properties>
         <jersey.version>2.25.1</jersey.version>
@@ -136,7 +136,7 @@
     </dependencies>
     <build>
         <!--TODO compilazione con libreria 1.4 fra dipendenze -->
-        <finalName>SwaggerApp</finalName>
+        <finalName>WorkerApi</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
