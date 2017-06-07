@@ -231,7 +231,7 @@
                 <version>3.0.2</version>
                 <executions>
                     <execution>
-                        <id>copy-resources</id>
+                        <id>copy-resources-swagger</id>
                         <!-- here the phase you need -->
                         <phase>validate</phase>
                         <goals>
@@ -242,6 +242,27 @@
                             <resources>
                                 <resource>
                                     <directory>src/main/resources/swagger-conf</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <!--FIXME La webApp è configurata per generare il swagger.json a partire dal codice
+                    Ma a causa di una incompatibilita con la versione di Jackson utilizzata, non funziona correttamente.
+                    L'indirizzo sarebbe ${project.build.finalName}/swagger.json
+                    Viene quindi riutilizzato quello usato per la generazione dei sorgenti-->
+                    <execution>
+                        <id>copy-swagger-json-for-doc</id>
+                        <!-- here the phase you need -->
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/${project.build.finalName}/resources</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
