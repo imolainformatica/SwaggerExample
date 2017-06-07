@@ -5,6 +5,7 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import it.imolinfo.adp.api.model.Events;
 import it.imolinfo.adp.api.model.EventsEvents;
 import it.imolinfo.adp.api.model.EventsLinks;
+import it.imolinfo.adp.api.model.ResponseMessage;
 import it.imolinfo.adp.api.service.ApiResponseMessage;
 import it.imolinfo.adp.api.service.CoreApi;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -18,7 +19,7 @@ import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.Assert.assertEquals;
@@ -72,9 +73,11 @@ public class FlowTest extends JerseyTest {
 //        assertTrue(response.hasEntity());
         assertEquals("Should return status 200", 200, response.getStatus());
         assertNotNull("Should return notification", response.getEntity());
-        WorkerPersonalAddressChangeEvent obj = response.readEntity(WorkerPersonalAddressChangeEvent.class);
-        assertTrue(obj!=null && obj.getEvents().size()>0);
-        assertEquals("actor.associateOID non corrisponde","G4O73G9Z62SL2NFM",obj.getEvents().get(0).getActor().getAssociateOID());
+        ResponseMessage responseMessage = response.readEntity(ResponseMessage.class);
+        assertTrue("response data non aspettata",responseMessage.getData() instanceof Map);
+        Map map = (Map) responseMessage.getData();
+        assertTrue(map!=null && map.get("events") instanceof List && ((List)map.get("events")).size()>0);
+        assertEquals("actor.associateOID non corrisponde","G4O73G9Z62SL2NFM",((Map)((Map)((List)map.get("events")).get(0)).get("actor")).get("associateOID"));
         verify(1, getRequestedFor(urlMatching(urlMock)));
         response.close();
     }

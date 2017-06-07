@@ -24,6 +24,7 @@ public class CoreApiServiceImpl extends CoreApiService {
         LOG.info(new StringBuilder().append("eventID").append(body.getEvents().get(0).getEventID()).toString());
 
         Object response=null;
+        ResponseMessage responseEntity = new ResponseMessage();
         if(body.getEvents().get(0).getLinks().size()>0){
             //ho qualcosa da fare
             for(EventsLinks eventsLinks : body.getEvents().get(0).getLinks()){
@@ -34,19 +35,29 @@ public class CoreApiServiceImpl extends CoreApiService {
                     try {
                         response =  EventProcessorFactory.getProcessor(href).invoke();
                     } catch (ApiException e) {
-                        LOG.error(String.format("Error from backend: %s", eventsLinks.getMethod()));
-                        //TODO gestione strutturata errori
-                        return Response.serverError().status(Response.Status.BAD_REQUEST).entity(String.format("Error from backend: %s",e.getLocalizedMessage())).build();
+                        String message = String.format("Error from backend: %s", e.getLocalizedMessage());
+                        LOG.error(message);
+                        responseEntity.setSuccess(false);
+                        responseEntity.setMessage(message);
+                        responseEntity.setCode(400);
+                        responseEntity.setData(e);
+                        return Response.serverError().status(Response.Status.BAD_REQUEST).entity(responseEntity).build();
                     }
                 }else{
-                    LOG.error(String.format("metodo non supportato: %s", eventsLinks.getMethod()));
-                    //TODO gestione strutturata errori
-                    return Response.serverError().status(Response.Status.BAD_REQUEST).entity(String.format("Method not supported: %s", eventsLinks.getMethod())).build();
+                    String message=String.format("metodo non supportato: %s", eventsLinks.getMethod());
+                    LOG.error(message);
+                    responseEntity.setSuccess(false);
+                    responseEntity.setMessage(message);
+                    responseEntity.setCode(400);
+                    return Response.serverError().status(Response.Status.BAD_REQUEST).entity(responseEntity).build();
                 }
             }
         }
+        responseEntity.setSuccess(true);
+        responseEntity.setMessage("OK");
+        responseEntity.setCode(200);
+        responseEntity.setData(response);
 
-
-        return Response.ok().entity(response).build();
+        return Response.ok().entity(responseEntity).build();
     }
 }
