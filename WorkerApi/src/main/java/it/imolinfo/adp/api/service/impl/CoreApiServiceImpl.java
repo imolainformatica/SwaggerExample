@@ -1,6 +1,7 @@
 package it.imolinfo.adp.api.service.impl;
 
 import com.adp.api.invoker.client.ApiException;
+import it.imolinfo.adp.api.exception.AdpOneServiceException;
 import it.imolinfo.adp.api.process.EventProcessorFactory;
 import it.imolinfo.adp.api.model.*;
 
@@ -39,6 +40,13 @@ public class CoreApiServiceImpl extends CoreApiService {
                         LOG.error(message);
                         responseEntity.setSuccess(false);
                         responseEntity.setMessage(message);
+                        responseEntity.setCode(400);
+                        responseEntity.setData(e);
+                        return Response.serverError().status(Response.Status.BAD_REQUEST).entity(responseEntity).build();
+                    } catch (AdpOneServiceException e) {
+                        LOG.error(e.getLocalizedMessage());
+                        responseEntity.setSuccess(false);
+                        responseEntity.setMessage(e.getLocalizedMessage());
                         responseEntity.setCode(400);
                         responseEntity.setData(e);
                         return Response.serverError().status(Response.Status.BAD_REQUEST).entity(responseEntity).build();

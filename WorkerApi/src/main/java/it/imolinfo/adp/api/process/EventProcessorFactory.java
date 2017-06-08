@@ -1,6 +1,7 @@
 package it.imolinfo.adp.api.process;
 
 import com.adp.api.invoker.api.WorkerApi;
+import it.imolinfo.adp.api.exception.AdpOneServiceException;
 import it.imolinfo.adp.api.service.NotFoundException;
 import it.imolinfo.app.ConfigurationManager;
 import org.slf4j.Logger;
@@ -13,10 +14,10 @@ public class EventProcessorFactory {
     static final Logger LOG = LoggerFactory.getLogger(EventProcessorFactory.class);
     private static final String PERSONAL_ADDRESS_CHANGE= ConfigurationManager.getBasePatternEvent() +"/worker.personal-address.change";
 
-    public static IWorkerEventProcessor getProcessor(String href) throws NotFoundException {
+    public static IWorkerEventProcessor getProcessor(String href) throws AdpOneServiceException {
         WorkerApi api = getWorkerApi(href);
 
-        if(href.contains(PERSONAL_ADDRESS_CHANGE)){
+        if(href.startsWith(PERSONAL_ADDRESS_CHANGE,1)){
             if (ConfigurationManager.testMode()){
                 return new WorkerEventChangePersonalAddressMockedProcessor(href,api);
             } else {
@@ -25,7 +26,7 @@ public class EventProcessorFactory {
             }
         } else {
             LOG.error(String.format("url %s not recognized", href));
-            throw new NotFoundException(400,String.format("url %s not recognized", href));
+            throw new AdpOneServiceException(400,String.format("url %s not recognized", href));
         }
     }
 
@@ -35,7 +36,7 @@ public class EventProcessorFactory {
      * @return
      * @throws NotFoundException
      */
-    private static WorkerApi getWorkerApi(String href) throws NotFoundException {
+    private static WorkerApi getWorkerApi(String href) throws AdpOneServiceException {
         WorkerApi api = new WorkerApi();
         //gestione host in maniera selettiva in base alla richiesta
         //            api.getApiClient().setBasePath("");
@@ -50,7 +51,7 @@ public class EventProcessorFactory {
         }
         else{
             LOG.error(String.format("url %s not recognized", href));
-            throw new NotFoundException(400,String.format("url %s not recognized", href));
+            throw new AdpOneServiceException(400,String.format("url %s not recognized", href));
         }
         return api;
     }

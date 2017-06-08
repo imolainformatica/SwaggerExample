@@ -1,9 +1,19 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.0.0",
-    "title": "workerUpdateReceiver"
+    "version": "${project.version}",
+    "description": "This is a example for POC:\n # Flow\n - accept a POST\n - execute a GET to the href specified into the links object if equals to events/hr/v1/worker.personal-address.change\n the host used: ${worker.hcm.host}\n ## TOBE\n - persistence\n - implements other GET\n",
+    "title": "workerUpdateReceiver",
+    "contact": {
+      "email": "gmorlini@imolinfo.it"
+    }
   },
+  "externalDocs": {
+    "description": "Find out the WIP of the architecture of the POC",
+    "url": "https://confluence.es.ad.adp.com/pages/viewpage.action?pageId=448530414#"
+  },
+  "host": "${it.api.worker.host}",
+  "basePath": "/${project.build.finalName}",
   "paths": {
     "/core/v1/event-notification-messages": {
       "post": {

@@ -4,7 +4,7 @@
     <groupId>it.imolinfo</groupId>
     <artifactId>WorkerApi</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>WorkerApi Webapp</name>
     <url>http://maven.apache.org</url>
     <repositories>
@@ -280,6 +280,7 @@
             </activation>
             <properties>
                 <worker.testmode>false</worker.testmode>
+                <it.api.worker.host>localhost:8080/</it.api.worker.host>
                 <worker.hcm.host>http://localhost:8989</worker.hcm.host>
                 <maven-surefire-plugin.skipTests>false</maven-surefire-plugin.skipTests>
                 <swagger-codegen-maven-plugin.inputSpecClient>src/main/resources/WorkersEvents.json</swagger-codegen-maven-plugin.inputSpecClient>
@@ -289,6 +290,7 @@
             <id>adp</id>
             <properties>
                 <worker.testmode>true</worker.testmode>
+                <it.api.worker.host>localhost:8080</it.api.worker.host>
                 <worker.hcm.host>https://test-api.adp.com</worker.hcm.host>
                 <maven-surefire-plugin.skipTests>true</maven-surefire-plugin.skipTests>
                 <swagger-codegen-maven-plugin.inputSpecClient>src/main/resources/WorkersEvents-Mock.json</swagger-codegen-maven-plugin.inputSpecClient>
