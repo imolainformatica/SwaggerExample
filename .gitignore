@@ -13,3 +13,7 @@ AppGenSwagger/target/
 AppGenSwagger/\.swagger-codegen-ignore
 
 WorkerApi/target/
+
+ListenersJMSqueue/target/
+
+QueueWebApp/target/
