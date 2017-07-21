@@ -28,7 +28,7 @@ public class ConfigurationManager {
         return Boolean.parseBoolean(properties.getProperty("worker.testmode","false"));
     }
     public static String getHCMHost(){
-        return properties.getProperty("worker.hcm.host","http://localhost:8080");
+        return properties.getProperty("worker.host","http://localhost:8080");
     }
     public static String getBasePatternEvent() {
         return BASE_PATTERN;

@@ -1,30 +1,26 @@
 package com.adp.api.invoker.api;
 
-import com.adp.api.invoker.model.WorkerPersonalAddressChangeEvent;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import it.imolinfo.adp.api.model.Events;
 import it.imolinfo.adp.api.model.EventsEvents;
 import it.imolinfo.adp.api.model.EventsLinks;
 import it.imolinfo.adp.api.model.ResponseMessage;
-import it.imolinfo.adp.api.service.ApiResponseMessage;
 import it.imolinfo.adp.api.service.CoreApi;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
 import org.junit.Rule;
-import org.junit.Test;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by morlins on 01/06/17.
@@ -40,7 +36,7 @@ public class FlowTest extends JerseyTest {
         return new ResourceConfig(CoreApi.class);
     }
 
-    @Test
+    //@Test
     public void test() {
         String eventId = "123";
         String originatingEventID = "test";
